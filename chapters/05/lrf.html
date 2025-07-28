@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5. Low Rank Factorization &#8212; Molass Library Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05/lrf';</script>
+    <link rel="icon" href="../../_static/molamola.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Rank Estimation" href="../06/rank_estimation.html" />
+    <link rel="prev" title="4. Baseline Correction" href="../04/data_correction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/molamola.png" class="logo__image only-light" alt="Molass Library Tutorial - Home"/>
+    <script>document.write(`<img src="../../_static/molamola.png" class="logo__image only-dark" alt="Molass Library Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Molass Library Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">4. Baseline Correction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">6. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/denss.html">7. Electron Density Retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/backward.html">8. Backward Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/05/lrf.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/05/lrf.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Low Rank Factorization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">5.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-decomposition">5.2. Default Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-components">5.3. Number of Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#area-proportions">5.4. Area Proportions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unrealistic-decomposition-under-determinedness">5.5. Unrealistic Decomposition (Under-determinedness)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-number-of-plates-plate-number">5.6. Theoretical Number of Plates (Plate Number)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-ranks-interparticle-interaction-effects">5.7. Component Ranks (Interparticle Interaction Effects)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#as-rank-1-component">5.7.1. As Rank 1 Component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#as-rank-2-component">5.7.2. As Rank 2 Component</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elution-curve-modeling">5.8. Elution Curve Modeling</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="low-rank-factorization">
+<h1><span class="section-number">5. </span>Low Rank Factorization<a class="headerlink" href="#low-rank-factorization" title="Link to this heading">#</a></h1>
+<p>In this chapter, we discuss decomposition of the sample into components. The first step in decompostion procedure is performed physically by the chromatography device and it achieves that purpose to a certain extent. However, that is not enough especially in cases where the peaks do not separate well from each other. In general, including such inconvenient cases, we can further decompose programmatically. Mathematically, this decomposition corresponds to the low rank factorizaion of matrices. We will show here how you can achieve this with Molas Library.</p>
+<section id="learning-points">
+<h2><span class="section-number">5.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>decomposition = ssd.quick_decomposition(options)</p>
+<ul>
+<li><p>options:</p>
+<ul>
+<li><p>num_comonents=n</p></li>
+<li><p>proportions=[p1, p2, …]</p></li>
+<li><p>num_plates=1440</p></li>
+<li><p>ranks=[r1, r2, …]</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>decomposition.get_proportions()</p></li>
+</ul>
+</section>
+<section id="default-decomposition">
+<h2><span class="section-number">5.2. </span>Default Decomposition<a class="headerlink" href="#default-decomposition" title="Link to this heading">#</a></h2>
+<p>In the default setting, i.e. without optional parameters, decomposition will be simply performed using the visible peaks.</p>
+<p>For example, in case of “SAMPLE1”, number of components will be two as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.2.0 or higher.&quot;</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
+<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<img alt="../../_images/0832d4f40d19b16fd37c418780c5be6510290d2f62af6b1b746abbd6566d2090.png" src="../../_images/0832d4f40d19b16fd37c418780c5be6510290d2f62af6b1b746abbd6566d2090.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">plot1</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/404141ff3d929536d456f4ea26326bf6dc23b942cdf26d91372e4fa50d9bc4bd.png" src="../../_images/404141ff3d929536d456f4ea26326bf6dc23b942cdf26d91372e4fa50d9bc4bd.png" />
+</div>
+</div>
+</section>
+<section id="number-of-components">
+<h2><span class="section-number">5.3. </span>Number of Components<a class="headerlink" href="#number-of-components" title="Link to this heading">#</a></h2>
+<p>As stated in the first chapter, “SAMPLE1” shows a bulk in the right (descending) side of the first peak. This is a sign which indicates the existance of another (probably slightly different) component in the first peak. To take into account this observation, the simplest way is to explicitly specify the number of comonents as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition3</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plot2</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of Sample1 (num_components=3)&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/72ee88fa2a84711846aff92c7e06aa83a659d806906cadbecc34bb6185976a13.png" src="../../_images/72ee88fa2a84711846aff92c7e06aa83a659d806906cadbecc34bb6185976a13.png" />
+</div>
+</div>
+</section>
+<section id="area-proportions">
+<h2><span class="section-number">5.4. </span>Area Proportions<a class="headerlink" href="#area-proportions" title="Link to this heading">#</a></h2>
+<p>Another and a little more precise way is to specify the proportions of each component. To achieve this, get the current proportions first as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">get_proportions</span><span class="p">()</span>
+<span class="n">proportions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.39450525, 0.12825418, 0.47724056])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, modify them, for example, as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modified_decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">proportions</span><span class="o">=</span><span class="p">[</span><span class="mf">0.32</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">])</span>
+<span class="n">plot2</span> <span class="o">=</span> <span class="n">modified_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Modified Decomposition of Sample1 (num_components=3, proportions=[0.32, 0.20, 0.48])&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/676aae0b99f33e4d980a2c87a2f1452eb446bff9820b604b6b48c760d79ad7a1.png" src="../../_images/676aae0b99f33e4d980a2c87a2f1452eb446bff9820b604b6b48c760d79ad7a1.png" />
+</div>
+</div>
+<p>Since the proportions to be specified are arbitrary, you should have a good reason for the appropriate proportions.</p>
+</section>
+<section id="unrealistic-decomposition-under-determinedness">
+<h2><span class="section-number">5.5. </span>Unrealistic Decomposition (Under-determinedness)<a class="headerlink" href="#unrealistic-decomposition-under-determinedness" title="Link to this heading">#</a></h2>
+<p>In this above example, the decomposition may have seemed rather obvious. However, in reality, it is not that simple.</p>
+<p>See the example below. Molass decomposes this sample (SAMPLE2) into unrealistic components.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
+<span class="n">ssd2</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
+<span class="n">trimmed_ssd2</span> <span class="o">=</span> <span class="n">ssd2</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd2</span> <span class="o">=</span> <span class="n">trimmed_ssd2</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition23</span> <span class="o">=</span> <span class="n">corrected_ssd2</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plot4</span> <span class="o">=</span> <span class="n">decomposition23</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of Sample2 (num_components=3)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/cdff9b5f3ca810684a08fc71e8911932b2980cb65a26af38cec96f12538f980b.png" src="../../_images/cdff9b5f3ca810684a08fc71e8911932b2980cb65a26af38cec96f12538f980b.png" />
+</div>
+</div>
+<p>This decomposition does fit the data, but peak widths should not vary irregularly like this according to the classical theory of chromatography.</p>
+</section>
+<section id="theoretical-number-of-plates-plate-number">
+<h2><span class="section-number">5.6. </span>Theoretical Number of Plates (Plate Number)<a class="headerlink" href="#theoretical-number-of-plates-plate-number" title="Link to this heading">#</a></h2>
+<p>The classical theory states that the peak widths should increase regularly as the fucntion of retention time (see the note below).
+To take into account this regularity, we can specify the plate number as follow.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The plate number is defined as follows.</p>
+<p><span class="math notranslate nohighlight">\( \frac{t_R^2}{\sigma^2} = N \qquad or \qquad \frac{t_R^2}{\sigma^2 + \tau^2} = N \)</span></p>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t_R\)</span> : retention time (measured from injection)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> : standard deviation of the component peak</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau\)</span> : asymmtry parameter in the EGH model</p></li>
+</ul>
+<p>This formula indicates the above rule on peak widths.</p>
+<p>More precise discussion is planned to be described in <a class="reference external" href="https://nshimizu0721.github.io/molass-essence/">Molass Essence</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition23n</span> <span class="o">=</span> <span class="n">corrected_ssd2</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">num_plates</span><span class="o">=</span><span class="mi">14400</span><span class="p">)</span>   <span class="c1"># 14400 = 48000 * 30cm/100cm</span>
+<span class="n">plot5</span> <span class="o">=</span> <span class="n">decomposition23n</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of Sample2 (num_components=3, num_plates=14400)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/a4dfe5543c2f62a336665a867dc1f2235897d8b5776a6ed489fcb1c815c2a6c4.png" src="../../_images/a4dfe5543c2f62a336665a867dc1f2235897d8b5776a6ed489fcb1c815c2a6c4.png" />
+</div>
+</div>
+<p>In this revised decomposition plot, the component curves are more realistic than before (in the sense of classical plate theory) while they do not fit the data well. This worsened fit indicates that this result is not satisfactory either, but it leads to an advanced understanding that this sample can not be decomposed so easily as shown previously (as unrealistic one).</p>
+</section>
+<section id="component-ranks-interparticle-interaction-effects">
+<h2><span class="section-number">5.7. </span>Component Ranks (Interparticle Interaction Effects)<a class="headerlink" href="#component-ranks-interparticle-interaction-effects" title="Link to this heading">#</a></h2>
+<section id="as-rank-1-component">
+<h3><span class="section-number">5.7.1. </span>As Rank 1 Component<a class="headerlink" href="#as-rank-1-component" title="Link to this heading">#</a></h3>
+<p>Molass by default regards each component as rank 1. This means that the component data can be expressed as a matrix defined as the matrix multiplication of a transposed column vector (n by 1 matrix) and a row vector (1 by m matrix).</p>
+<p>However, there are cases where this assumption is not appropriate. For example, see the bending Giunier plot of “SAMPLE3” shown below, which does not obey the law.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Precise discussion is planned to be described in <a class="reference external" href="https://nshimizu0721.github.io/molass-essence/">Molass Essence</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE3</span>
+<span class="n">ssd3</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition31</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">plot6</span> <span class="o">=</span> <span class="n">decomposition31</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sample3 as rank 1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/654b0853a68dad16c68ac97a0bee28295c93b78ddfca81ae44086a2048617abd.png" src="../../_images/654b0853a68dad16c68ac97a0bee28295c93b78ddfca81ae44086a2048617abd.png" />
+</div>
+</div>
+</section>
+<section id="as-rank-2-component">
+<h3><span class="section-number">5.7.2. </span>As Rank 2 Component<a class="headerlink" href="#as-rank-2-component" title="Link to this heading">#</a></h3>
+<p>The above failure can be considered as a result of the false assumption that the rank of the component peak is one. To fix this, specify the rank as two. This will result in the expected linear Guinier plot shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition31</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">decomposition31</span><span class="o">.</span><span class="n">update_xr_ranks</span><span class="p">(</span><span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> 
+<span class="n">plot6</span> <span class="o">=</span> <span class="n">decomposition31</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAMPLE3 as rank 2&quot;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/1f668ed99a5fdeaf30b9438fbc7229929ea6580430b9eabe40fc5c07ea1c3aa4.png" src="../../_images/1f668ed99a5fdeaf30b9438fbc7229929ea6580430b9eabe40fc5c07ea1c3aa4.png" />
+</div>
+</div>
+<p>We will explore more on how to estimate the ranks in the next chapter <a class="reference internal" href="#rank_estimation"><span class="xref myst">Rank Estimation</span></a>.</p>
+</section>
+</section>
+<section id="elution-curve-modeling">
+<h2><span class="section-number">5.8. </span>Elution Curve Modeling<a class="headerlink" href="#elution-curve-modeling" title="Link to this heading">#</a></h2>
+<p>To achieve the decomposition, Molass can use different curve models.</p>
+<ul class="simple">
+<li><p>EGH: Exponential Gaussian Hybrid (default)</p></li>
+<li><p>SDM: Stochastic Dispersive Model</p></li>
+<li><p>EDM: Equilibrium Dispersive Model</p></li>
+</ul>
+<p>How to ustilize these models is beyond the scope of this tutorial and left to the advanced documents:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nshimizu0721.github.io/molass-essence/">Molass Library Essence</a></p></li>
+<li><p><a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters\05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../04/data_correction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Baseline Correction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../06/rank_estimation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Rank Estimation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">5.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-decomposition">5.2. Default Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-components">5.3. Number of Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#area-proportions">5.4. Area Proportions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unrealistic-decomposition-under-determinedness">5.5. Unrealistic Decomposition (Under-determinedness)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-number-of-plates-plate-number">5.6. Theoretical Number of Plates (Plate Number)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-ranks-interparticle-interaction-effects">5.7. Component Ranks (Interparticle Interaction Effects)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#as-rank-1-component">5.7.1. As Rank 1 Component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#as-rank-2-component">5.7.2. As Rank 2 Component</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elution-curve-modeling">5.8. Elution Curve Modeling</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Molass Community powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

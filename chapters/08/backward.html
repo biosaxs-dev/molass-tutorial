@@ -1,0 +1,1160 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8. Backward Compatibility &#8212; Molass Library Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08/backward';</script>
+    <link rel="icon" href="../../_static/molamola.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9. Low Rank Optimization" href="../10/lro.html" />
+    <link rel="prev" title="7. Electron Density Retrieval" href="../07/denss.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/molamola.png" class="logo__image only-light" alt="Molass Library Tutorial - Home"/>
+    <script>document.write(`<img src="../../_static/molamola.png" class="logo__image only-dark" alt="Molass Library Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Molass Library Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">4. Baseline Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">5. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">6. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/denss.html">7. Electron Density Retrieval</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Backward Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/08/backward.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/08/backward.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Backward Compatibility</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">8.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-the-report">8.2. Preparation for the Report</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-excel-report">8.3. Making the Excel Report</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="backward-compatibility">
+<span id="id1"></span><h1><span class="section-number">8. </span>Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h1>
+<p>The legacy MOLASS program produces its analysis results in Excel books. We will explain here how to do the same in Molass Library.</p>
+<section id="learning-points">
+<h2><span class="section-number">8.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>rgcurve = ssd.xr.compute_rgcurve()</p></li>
+<li><p>ranges = decomposition.get_paired_ranges()</p></li>
+<li><p>decomposition.plot_components(rgcurve=rgcurve, ranges=ranges)</p></li>
+<li><p>rgcurve_atsas = ssd.xr.compute_rgcurve_atsas()</p></li>
+<li><p>mapping = ssd.estimate_mapping()</p></li>
+<li><p>conc_info = ssd.make_conc_info(mapping)</p></li>
+<li><p>rg_info = rgcurve, rgcurve_atsas</p></li>
+<li><p>make_v1report(ssd, conc_info=conc_info, rg_info=rg_info, lr_info=decomposition, ranges=ranges)</p></li>
+</ul>
+</section>
+<section id="preparation-for-the-report">
+<h2><span class="section-number">8.2. </span>Preparation for the Report<a class="headerlink" href="#preparation-for-the-report" title="Link to this heading">#</a></h2>
+<p>Although it is possible to do it as well without any preparation (that is, implicitly all by default), we will show explicitly what to prepare in the hope that it will better serve as explanation and can be easy to modify.</p>
+<p>First, we will prepare rg curves and analysis ranges.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.3.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.3.0 or higher.&quot;</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
+<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
+<span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plot5</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of Sample1 (num_components=3)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/72ee88fa2a84711846aff92c7e06aa83a659d806906cadbecc34bb6185976a13.png" src="../../_images/72ee88fa2a84711846aff92c7e06aa83a659d806906cadbecc34bb6185976a13.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgcurve</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">compute_rgcurve</span><span class="p">()</span>
+<span class="n">plot6</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of Sample1 with Rg Curve&quot;</span><span class="p">,</span> <span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 241/241 [01:01&lt;00:00,  3.94it/s]
+</pre></div>
+</div>
+<img alt="../../_images/9119145fe73ff8f0609dcedafc04653d65f847b697e9d572fa4b03ede4b50665.png" src="../../_images/9119145fe73ff8f0609dcedafc04653d65f847b697e9d572fa4b03ede4b50665.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pairedranges</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">get_pairedranges</span><span class="p">()</span>
+<span class="n">plot8</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of Sample1 with Rg Curve and Paired Ranges&quot;</span><span class="p">,</span> <span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">pairedranges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_range_list: peak.area_prop= 0.3945052694721475
+get_range_list: peak.area_prop= 0.12825419228150514
+get_range_list: peak.area_prop= 0.47724053824634743
+editor_ranges= [[[81, 89], [89, 98]], [[101, 108], [108, 118]], [[148, 157], [157, 166]]]
+select_matrix= [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+top_x_list= [89, 108, 157]
+legacy_ranges= [[PeakInfo(0,89,[0, ModelEvaluator(EGH(),array([ 0.22144205, 89.39315878,  7.33175192,  0.67106922]))]), [81, 89], [89, 98]], [PeakInfo(1,108,[1, ModelEvaluator(EGH(),array([8.44276569e-02, 1.08077959e+02, 7.55828545e+00, 5.47696998e+00]))]), [101, 108], [108, 118]], [PeakInfo(2,157,[2, ModelEvaluator(EGH(),array([5.32628729e-01, 1.56647360e+02, 8.16330460e+00, 8.93435324e-04]))]), [148, 157], [157, 166]]]
+</pre></div>
+</div>
+<img alt="../../_images/35b5e5986350389fcb484ebb6420436687934fc12ffaeea1459e8976c44a4179.png" src="../../_images/35b5e5986350389fcb484ebb6420436687934fc12ffaeea1459e8976c44a4179.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgcurve_atsas</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">compute_rgcurve_atsas</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 241/241 [01:27&lt;00:00,  2.74it/s]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="making-the-excel-report">
+<h2><span class="section-number">8.3. </span>Making the Excel Report<a class="headerlink" href="#making-the-excel-report" title="Link to this heading">#</a></h2>
+<p>To make the report, we also need the concentration information which can be prepared as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">molass.Reports.V1Report</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">molass</span><span class="o">.</span><span class="n">Reports</span><span class="o">.</span><span class="n">V1Report</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass.Reports.V1Report</span> <span class="kn">import</span> <span class="n">make_v1report</span>
+
+<span class="n">rgcurves</span> <span class="o">=</span> <span class="n">rgcurve</span><span class="p">,</span> <span class="n">rgcurve_atsas</span>
+<span class="n">make_v1report</span><span class="p">(</span><span class="n">corrected_ssd</span><span class="p">,</span> <span class="n">rgcurves</span><span class="o">=</span><span class="n">rgcurves</span><span class="p">,</span> <span class="n">decomposition</span><span class="o">=</span><span class="n">decomposition</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">pairedranges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([1], (1, 1, True)):   3%|▎         | 1/31 [00:00&lt;00:25,  1.17it/s]2025-07-28 11:08:26 Controller initialized with temp_folder=d:\Github\molass-tutorial\chapters\08\report_folder\.temp
+2025-07-28 11:08:29 Progress unit 2 reported error at step 1.
+([1], (1, 1, True)):   6%|▋         | 2/31 [00:03&lt;00:46,  1.62s/it]
+2025-07-28 11:08:53 excessive step_done call!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving Guinier Analysis Report to d:\Github\molass-tutorial\chapters\08\report_folder\.temp/--serial_analysis-temp.xlsx
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:00 Decomposition.get_cd_color_info: xr_ranks is None, using default ranks.
+2025-07-28 11:09:00 Starting LRF report generation...
+2025-07-28 11:09:00 cnv_ranges=[PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,108,&#39;elm_recs&#39;),(101, 118)), PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] from ranges_=[[(82, 89), (89, 98)], [(101, 118)], [(148, 157), (157, 166)]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>applied ranges: [[(82, 89), (89, 98)], [(101, 118)], [(148, 157), (157, 166)]]
+report ranges: [[[82, 89], [89, 98]], [[101, 118]], [[148, 157], [157, 166]]]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:02 Converting to Guinier result array...
+2025-07-28 11:09:02 Conversion to Guinier result array completed.
+2025-07-28 11:09:02 lrf executer has been constructed with conc_factor=8.155.
+2025-07-28 11:09:02 ZeroExtrapolator: use_elution_models=True
+2025-07-28 11:09:02 cnv_ranges=[PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,108,&#39;elm_recs&#39;),(101, 118)), PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))], num_ranges=5
+2025-07-28 11:09:02 lrf solver has been constructed with conc_factor 8.155, Rg=None.
+2025-07-28 11:09:02 conc_depend has been set to 1
+2025-07-28 11:09:02 lrf_bound_correction=1
+2025-07-28 11:09:02 lrf solver has been constructed with conc_factor 8.155, Rg=None.
+2025-07-28 11:09:02 conc_depend has been set to 1
+2025-07-28 11:09:02 pno_map=[0, 1, 2], scd_colors=[&#39;green&#39;, &#39;green&#39;, &#39;green&#39;]
+2025-07-28 11:09:02 range_indeces have been created as follows
+2025-07-28 11:09:02 [0] [0, 82, 89]
+2025-07-28 11:09:02 [1] [0, 89, 98]
+2025-07-28 11:09:02 [2] [1, 101, 118]
+2025-07-28 11:09:02 [3] [2, 148, 157]
+2025-07-28 11:09:02 [4] [2, 157, 166]
+2025-07-28 11:09:02 pfoot_indeces have been created as follows
+2025-07-28 11:09:02 [0] [0, 72, 108]
+2025-07-28 11:09:02 [1] [0, 72, 108]
+2025-07-28 11:09:02 [2] [1, 96, 137]
+2025-07-28 11:09:02 [3] [2, 137, 177]
+2025-07-28 11:09:02 [4] [2, 137, 177]
+2025-07-28 11:09:02 required_peakset_infos are created as follows
+2025-07-28 11:09:02 [0] [0, 0, {0}]
+2025-07-28 11:09:02 [1] [0, 0, {0, 1}]
+2025-07-28 11:09:02 [2] [1, 1, {0, 1}]
+2025-07-28 11:09:02 [3] [2, 0, {2}]
+2025-07-28 11:09:02 [4] [2, 0, {2}]
+2025-07-28 11:09:02 selected 0-th range has 1 element(s).
+2025-07-28 11:09:02 solve_range called with lrf_rank=1
+2025-07-28 11:09:02 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98))] with concentration_datatype=2
+2025-07-28 11:09:02 C matrix data.shape is (1, 8)
+2025-07-28 11:09:02 pno=0, nth=0, cdl_list=[1], use_elution_models=True
+2025-07-28 11:09:02 SVD-reconstructed with rank=1 in range [82, 90).
+2025-07-28 11:09:02 solving rank 1 factorization of M into P, C with shapes (984, 8) = (984, 1) @ (1, 8)
+2025-07-28 11:09:02 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>indeces[0]= [82 83 84 85 86 87 88 89]
+indeces[0]= [89 90 91 92 93 94 95 96 97 98]
+indeces[1]= [101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118]
+indeces[2]= [148 149 150 151 152 153 154 155 156 157]
+indeces[2]= [157 158 159 160 161 162 163 164 165 166]
+data.shape= (984, 241)
+data.shape= (984, 241)
+Optimization terminated successfully.
+         Current function value: 0.000146
+         Iterations: 0
+         Function evaluations: 1
+         Gradient evaluations: 1
+It took  0.0010008811950683594 num_iterations= 0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:03 selected 1-th range has 2 element(s).
+2025-07-28 11:09:03 solve_range called with lrf_rank=1
+2025-07-28 11:09:03 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,108,&#39;elm_recs&#39;),(101, 118))] with concentration_datatype=2
+2025-07-28 11:09:03 C matrix data.shape is (2, 10)
+2025-07-28 11:09:03 pno=0, nth=0, cdl_list=[1, 1], use_elution_models=True
+2025-07-28 11:09:03 SVD-reconstructed with rank=2 in range [89, 99).
+2025-07-28 11:09:03 solving rank 2 factorization of M into P, C with shapes (984, 10) = (984, 2) @ (2, 10)
+2025-07-28 11:09:03 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.000971
+         Iterations: 0
+         Function evaluations: 1
+         Gradient evaluations: 1
+It took  0.001995086669921875 num_iterations= 0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:04 selected 2-th range has 2 element(s).
+2025-07-28 11:09:04 solve_range called with lrf_rank=1
+2025-07-28 11:09:04 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,108,&#39;elm_recs&#39;),(101, 118))] with concentration_datatype=2
+2025-07-28 11:09:04 C matrix data.shape is (2, 18)
+2025-07-28 11:09:04 pno=1, nth=1, cdl_list=[1, 1], use_elution_models=True
+2025-07-28 11:09:04 SVD-reconstructed with rank=2 in range [101, 119).
+2025-07-28 11:09:04 solving rank 2 factorization of M into P, C with shapes (984, 18) = (984, 2) @ (2, 18)
+2025-07-28 11:09:04 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.000708
+         Iterations: 0
+         Function evaluations: 1
+         Gradient evaluations: 1
+It took  0.0020036697387695312 num_iterations= 0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:05 selected 3-th range has 1 element(s).
+2025-07-28 11:09:05 solve_range called with lrf_rank=1
+2025-07-28 11:09:05 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
+2025-07-28 11:09:05 C matrix data.shape is (1, 10)
+2025-07-28 11:09:05 pno=2, nth=0, cdl_list=[1], use_elution_models=True
+2025-07-28 11:09:05 SVD-reconstructed with rank=1 in range [148, 158).
+2025-07-28 11:09:05 solving rank 1 factorization of M into P, C with shapes (984, 10) = (984, 1) @ (1, 10)
+2025-07-28 11:09:05 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.001028
+         Iterations: 0
+         Function evaluations: 1
+         Gradient evaluations: 1
+It took  0.002000093460083008 num_iterations= 0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:06 selected 4-th range has 1 element(s).
+2025-07-28 11:09:06 solve_range called with lrf_rank=1
+2025-07-28 11:09:06 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
+2025-07-28 11:09:06 C matrix data.shape is (1, 10)
+2025-07-28 11:09:06 pno=2, nth=0, cdl_list=[1], use_elution_models=True
+2025-07-28 11:09:06 SVD-reconstructed with rank=1 in range [157, 167).
+2025-07-28 11:09:06 solving rank 1 factorization of M into P, C with shapes (984, 10) = (984, 1) @ (1, 10)
+2025-07-28 11:09:06 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.000339
+         Iterations: 0
+         Function evaluations: 1
+         Gradient evaluations: 1
+It took  0.0019953250885009766 num_iterations= 0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:07 selected 0-th range has 1 element(s).
+2025-07-28 11:09:07 solve_range called with lrf_rank=2
+2025-07-28 11:09:07 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98))] with concentration_datatype=2
+2025-07-28 11:09:07 C matrix data.shape is (2, 8)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>solver finished.
+WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 114.49
+Number of experimental Shannon channels: 15
+Number of calculated Shannon channels: 15
+WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 166.52
+Number of experimental Shannon channels: 22
+Number of calculated Shannon channels: 22
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:10 BoundedLrfSolver solved range 82-90 with lrf_rank=2
+2025-07-28 11:09:10 selected 1-th range has 2 element(s).
+2025-07-28 11:09:10 solve_range called with lrf_rank=2
+2025-07-28 11:09:10 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,108,&#39;elm_recs&#39;),(101, 118))] with concentration_datatype=2
+2025-07-28 11:09:10 C matrix data.shape is (4, 10)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 147.64
+Number of experimental Shannon channels: 20
+Number of calculated Shannon channels: 20
+WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 108.24
+Number of experimental Shannon channels: 14
+Number of calculated Shannon channels: 14
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:13 BoundedLrfSolver solved range 89-99 with lrf_rank=2
+2025-07-28 11:09:13 selected 2-th range has 2 element(s).
+2025-07-28 11:09:13 solve_range called with lrf_rank=2
+2025-07-28 11:09:13 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,108,&#39;elm_recs&#39;),(101, 118))] with concentration_datatype=2
+2025-07-28 11:09:13 C matrix data.shape is (4, 18)
+c:\Program Files\Python312\Lib\site-packages\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
+  return L/(1 + np.exp(-k*(x-x0))) + b
+c:\Program Files\Python312\Lib\site-packages\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
+  return L/(1 + np.exp(-k*(x-x0))) + b
+c:\Program Files\Python312\Lib\site-packages\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
+  return L/(1 + np.exp(-k*(x-x0))) + b
+c:\Program Files\Python312\Lib\site-packages\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
+  return L/(1 + np.exp(-k*(x-x0))) + b
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 157.49
+Number of experimental Shannon channels: 21
+Number of calculated Shannon channels: 21
+WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
+  return L/(1 + np.exp(-k*(x-x0))) + b
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dmax = 197.97
+Number of experimental Shannon channels: 26
+Number of calculated Shannon channels: 26
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:16 BoundedLrfSolver solved range 101-119 with lrf_rank=2
+2025-07-28 11:09:16 selected 3-th range has 1 element(s).
+2025-07-28 11:09:16 solve_range called with lrf_rank=2
+2025-07-28 11:09:16 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
+2025-07-28 11:09:16 C matrix data.shape is (2, 10)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 78.80
+Number of experimental Shannon channels: 10
+Number of calculated Shannon channels: 10
+WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 91.30
+Number of experimental Shannon channels: 12
+Number of calculated Shannon channels: 12
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:19 BoundedLrfSolver solved range 148-158 with lrf_rank=2
+2025-07-28 11:09:19 selected 4-th range has 1 element(s).
+2025-07-28 11:09:19 solve_range called with lrf_rank=2
+2025-07-28 11:09:19 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
+2025-07-28 11:09:19 C matrix data.shape is (2, 10)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 81.89
+Number of experimental Shannon channels: 11
+Number of calculated Shannon channels: 11
+WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 78.63
+Number of experimental Shannon channels: 10
+Number of calculated Shannon channels: 10
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:21 BoundedLrfSolver solved range 157-167 with lrf_rank=2
+2025-07-28 11:09:21 [0-0] color=green, lrf_rank=1
+2025-07-28 11:09:21 [2-3] color=green, lrf_rank=1
+2025-07-28 11:09:21 ZeroExtrapolator: using LRF Ppol.
+2025-07-28 11:09:21 extrapolating for [[[82, 89], [89, 98]], [[101, 118]], [[148, 157], [157, 166]]]
+2025-07-28 11:09:21 extrapolation start for the 0th peak ad(0) with range (82, 89)
+2025-07-28 11:09:21 Guinier boundary is assumed at Q[72]=0.0446.
+2025-07-28 11:09:21 1st peak asc-side extrapolation done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>solver finished.
+[0] [0, 0, PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98))] 2
+[1] [0, 1, PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98))] 2
+[2] [1, 0, PairedRange(PeakInfo(1,108,&#39;elm_recs&#39;),(101, 118))] 1
+[3] [2, 0, PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] 2
+[4] [2, 1, PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] 2
+data_matrix.shape= (8, 984)
+  Concentration  Overlap    File
+  1.30 / 1.7164    1 -  75  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00082_avg.dat
+  1.43 / 1.4788   23 -  85  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00083_avg.dat
+  1.55 / 1.3099   19 -  75  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00084_avg.dat
+  1.65 / 1.1951   19 -  73  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00085_avg.dat
+  1.73 / 1.0991   17 -  99  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00086_avg.dat
+  1.78 / 1.0369   17 -  69  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00087_avg.dat
+  1.78 / 0.9861   17 -  71  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00089_avg.dat
+  1.79  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00088_avg.dat
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:32 1st peak asc-side atsas result: Rg=36.2128 I(0)=0.122869
+2025-07-28 11:09:32 1st peak asc-side rg re-estimation done with extrapolated Rg=35.7 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 8 , zx_rows= 13
+boundary_j= None
+MajorUnit= 10.0
+MinimumScale= 1e-07
+MaximumScale= 1.0
+work_row= 1005
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:40 1st peak asc-side book done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
+MajorUnit= 10.0
+MinimumScale= 0.0001
+MaximumScale= 1.0
+work_row= 536
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:45 1st peak asc-side atsas book done.
+2025-07-28 11:09:45 extrapolation start for the 0th peak ad(1) with range (89, 98)
+2025-07-28 11:09:45 Guinier boundary is assumed at Q[72]=0.0446.
+2025-07-28 11:09:45 1st peak desc-side extrapolation done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data_matrix.shape= (10, 984)
+  Concentration  Overlap    File
+  1.00 / 1.6855    1 - 115  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00098_avg.dat
+  1.07 / 1.5404    1 -  55  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00097_avg.dat
+  1.14 / 1.4136    1 -  85  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00096_avg.dat
+  1.25 / 1.2958    1 -  79  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00095_avg.dat
+  1.34 / 1.2066    1 -  83  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00094_avg.dat
+  1.45 / 1.1302    1 -  83  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00093_avg.dat
+  1.54 / 1.0717   17 -  87  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00092_avg.dat
+  1.64 / 1.0271    1 -  59  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00091_avg.dat
+  1.71 / 1.0080    7 -  87  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00090_avg.dat
+  1.78  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00089_avg.dat
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:09:59 1st peak desc-side atsas result: Rg=36.0713 I(0)=0.12399
+2025-07-28 11:09:59 1st peak desc-side rg re-estimation done with extrapolated Rg=35.8 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 10 , zx_rows= 15
+boundary_j= None
+MajorUnit= 10.0
+MinimumScale= 1e-07
+MaximumScale= 1.0
+work_row= 1007
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:10:06 1st peak desc-side book done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
+MajorUnit= 10.0
+MinimumScale= 0.0001
+MaximumScale= 1.0
+work_row= 534
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:10:11 1st peak desc-side atsas book done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num_rows= 984
+MajorUnit= 10.0
+MinimumScale= 1e-05
+MaximumScale= 1.0
+work_row= 991
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:10:13 1st peak overlay book done.
+2025-07-28 11:10:13 extrapolation start for the 1st peak ad(0) with range (101, 118)
+2025-07-28 11:10:13 Guinier boundary is assumed at Q[91]=0.0525.
+2025-07-28 11:10:13 2nd peak both-side extrapolation done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data_matrix.shape= (18, 984)
+  Concentration  Overlap    File
+  0.35 / 2.7545   43 - 101  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00118_avg.dat
+  0.39 / 2.6145   13 -  77  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00117_avg.dat
+  0.43 / 2.3822    7 -  81  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00116_avg.dat
+  0.49 / 2.0274   35 -  97  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00115_avg.dat
+  0.54 / 1.9767    1 -  45  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00114_avg.dat
+  0.59 / 1.7519    5 -  81  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00113_avg.dat
+  0.65 / 1.6420    3 -  65  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00112_avg.dat
+  0.70 / 1.5256    1 -  83  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00111_avg.dat
+  0.74 / 1.4483    1 -  69  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00110_avg.dat
+  0.78 / 1.3530    1 -  65  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00109_avg.dat
+  0.82 / 1.2818   11 -  65  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00108_avg.dat
+  0.84 / 1.2478    1 -  81  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00107_avg.dat
+  0.85 / 1.2290    1 -  55  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00106_avg.dat
+  0.86 / 1.1085    1 -  67  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00103_avg.dat
+  0.87 / 1.1924    1 -  69  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00105_avg.dat
+  0.87 / 1.0694    1 -  77  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00102_avg.dat
+  0.87 / 1.1559    5 -  77  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00104_avg.dat
+  0.89  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00101_avg.dat
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:10:34 2nd peak both-side atsas result: Rg=32.027 I(0)=0.0516791
+2025-07-28 11:10:34 2nd peak both-side rg re-estimation done with extrapolated Rg=33.4 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 18 , zx_rows= 23
+boundary_j= None
+MajorUnit= 10.0
+MinimumScale= 1e-06
+MaximumScale= 1.0
+work_row= 1015
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:10:42 2nd peak both-side book done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
+MajorUnit= 10.0
+MinimumScale= 0.0001
+MaximumScale= 1.0
+work_row= 573
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:10:47 2nd peak both-side atsas book done.
+2025-07-28 11:10:47 extrapolation start for the 2nd peak ad(0) with range (148, 157)
+2025-07-28 11:10:47 Guinier boundary is assumed at Q[124]=0.0664.
+2025-07-28 11:10:47 3rd peak asc-side extrapolation done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data_matrix.shape= (10, 984)
+  Concentration  Overlap    File
+  2.20 / 1.8049    5 - 105  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00148_avg.dat
+  2.55 / 1.5959   17 - 117  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00149_avg.dat
+  2.89 / 1.4210   43 - 105  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00150_avg.dat
+  3.24 / 1.2650   37 - 115  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00151_avg.dat
+  3.54 / 1.1696   73 - 145  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00152_avg.dat
+  3.83 / 1.0988   11 - 125  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00153_avg.dat
+  4.03 / 1.0429   43 - 115  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00154_avg.dat
+  4.17 / 1.0132   31 - 101  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00155_avg.dat
+  4.27 / 0.9971   55 - 103  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00156_avg.dat
+  4.29  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00157_avg.dat
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:11:08 3rd peak asc-side atsas result: Rg=24.3438 I(0)=0.121416
+2025-07-28 11:11:08 3rd peak asc-side rg re-estimation done with extrapolated Rg=24.1 
+Win32 exception occurred releasing IUnknown at 0x00000229FAD0C980
+Win32 exception occurred releasing IUnknown at 0x00000229F829D670
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 10 , zx_rows= 15
+boundary_j= None
+MajorUnit= 10.0
+MinimumScale= 1e-06
+MaximumScale= 1.0
+work_row= 1007
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:11:16 3rd peak asc-side book done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
+MajorUnit= 10.0
+MinimumScale= 0.0001
+MaximumScale= 1.0
+work_row= 793
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:11:23 3rd peak asc-side atsas book done.
+2025-07-28 11:11:23 extrapolation start for the 2nd peak ad(1) with range (157, 166)
+2025-07-28 11:11:23 Guinier boundary is assumed at Q[122]=0.0656.
+2025-07-28 11:11:23 3rd peak desc-side extrapolation done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data_matrix.shape= (10, 984)
+  Concentration  Overlap    File
+  2.55 / 1.9215   15 -  99  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00166_avg.dat
+  2.90 / 1.6697    1 - 111  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00165_avg.dat
+  3.19 / 1.4741   45 - 113  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00164_avg.dat
+  3.48 / 1.3288   19 - 113  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00163_avg.dat
+  3.71 / 1.2290   11 -  99  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00162_avg.dat
+  3.93 / 1.1448   31 - 113  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00161_avg.dat
+  4.09 / 1.0811   31 - 143  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00160_avg.dat
+  4.21 / 1.0415   57 - 131  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00159_avg.dat
+  4.29 / 1.0086   51 - 103  d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00158_avg.dat
+  4.29  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00157_avg.dat
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:11:45 3rd peak desc-side atsas result: Rg=24.2569 I(0)=0.120737
+2025-07-28 11:11:45 3rd peak desc-side rg re-estimation done with extrapolated Rg=24.1 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 10 , zx_rows= 15
+boundary_j= None
+MajorUnit= 10.0
+MinimumScale= 1e-06
+MaximumScale= 1.0
+work_row= 1007
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:11:52 3rd peak desc-side book done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
+MajorUnit= 10.0
+MinimumScale= 0.0001
+MaximumScale= 1.0
+work_row= 793
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:11:59 3rd peak desc-side atsas book done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num_rows= 984
+MajorUnit= 10.0
+MinimumScale= 0.0001
+MaximumScale= 1.0
+work_row= 991
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:12:01 3rd peak overlay book done.
+2025-07-28 11:12:01 d:\Github\molass-tutorial\chapters\08\report_folder\averaged has been removed.
+2025-07-28 11:12:01 premature all_done call!
+2025-07-28 11:12:01 Generating summary report...
+2025-07-28 11:12:01 Summary includes low quality results. Be aware.
+2025-07-28 11:12:01 add_summary_format_setting start for d:\Github\molass-tutorial\chapters\08\report_folder\.temp/--summary.xlsx(Summary for Publication)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Errno 2] No such file or directory: &#39;c:\\Program Files\\Python312\\Lib\\site-packages\\molass_data\\SAMPLE1/Xray_Scattering_Info.txt&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:12:05 summary book done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>path= d:\Github\molass-tutorial\chapters\08\report_folder\.temp/--summary.csv
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-28 11:12:19 books merge done.
+2025-07-28 11:12:19 Summary report generation completed.
+2025-07-28 11:12:19 premature all_done call!
+Killed the remaining process pid=33336
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SerialData.__del__ ok
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters\08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../07/denss.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Electron Density Retrieval</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../10/lro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Low Rank Optimization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">8.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-the-report">8.2. Preparation for the Report</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-excel-report">8.3. Making the Excel Report</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Molass Community powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
