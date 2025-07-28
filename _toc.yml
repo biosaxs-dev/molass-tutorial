@@ -1,0 +1,26 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: chapters/intro
+options:
+  numbered: 3
+chapters:
+- file: chapters/00/quick_start
+  title: Quick Start
+- file: chapters/01/data_objects
+  title: Data Objects
+- file: chapters/02/data_trimming
+  title: Data Trimming
+- file: chapters/04/data_correction
+  title: Baseline Correction
+- file: chapters/05/lrf
+  title: Low Rank Factorization
+- file: chapters/06/rank_estimation
+  title: Rank Estimation
+- file: chapters/07/denss
+  title: Electron Density Retrieval
+- file: chapters/08/backward
+  title: Backward Compatibility
+- file: chapters/10/lro
+  title: Low Rank Optimization

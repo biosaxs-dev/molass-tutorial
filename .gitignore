@@ -1,0 +1,23 @@
+# Ignore the generated files and folders
+_build/
+
+# Ignore the evironment file which defines PYTHONPATH
+.env
+
+# Ignore the local settings for each user
+local_settings.py
+
+# Ignore the animation and figure files
+*.gif
+**/figs/**
+
+# Ignore the Jupyter Notebook checkpoints
+**/.ipynb_checkpoints/
+
+# Ignore the run_denss results
+**/temp/**
+
+*.xlsx
+
+**/atsas-results/**
+**/report_folder/**
