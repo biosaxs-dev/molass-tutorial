@@ -22,5 +22,9 @@ chapters:
   title: Electron Density Retrieval
 - file: chapters/08/backward
   title: Backward Compatibility
-- file: chapters/10/lro
+- file: chapters/10/non-apparent
+  title: Non-Apparent Decomposition
+- file: chapters/11/advanced-models
+  title: Advanced Elution Models
+- file: chapters/20/lro
   title: Low Rank Optimization
