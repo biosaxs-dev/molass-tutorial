@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. Rank Estimation &#8212; Molass Library Tutorial</title>
+    <title>9. Non-apparent Decomposition &#8212; Molass Library Tutorial</title>
   
   
   
@@ -57,12 +57,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06/rank_estimation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/10/non-apparent';</script>
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7. Electron Density Retrieval" href="../07/denss.html" />
-    <link rel="prev" title="5. Low Rank Factorization" href="../05/lrf.html" />
+    <link rel="next" title="10. Advanced Elution Models" href="../11/advanced-models.html" />
+    <link rel="prev" title="8. Backward Compatibility" href="../08/backward.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,10 +186,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">4. Baseline Correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">5. Low Rank Factorization</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">6. Rank Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/denss.html">7. Electron Density Retrieval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/backward.html">8. Backward Compatibility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/non-apparent.html">9. Non-Apparent Decomposition</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Non-Apparent Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/advanced-models.html">10. Advanced Elution Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20/lro.html">11. Low Rank Optimization</a></li>
 </ul>
@@ -263,7 +263,7 @@
       
       
       
-      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/06/rank_estimation.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/10/non-apparent.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -293,7 +293,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/06/rank_estimation.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/10/non-apparent.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Rank Estimation</h1>
+    <h1>Non-apparent Decomposition</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,15 +387,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">6.1. Learning Points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">6.2. Human Observation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">6.3. Absorbance / Scattering Ratio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">6.4. Concentration Dependence</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relation-between-scd-and-rank">6.4.1. Relation between SCD and Rank</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample1-case-of-no-concentration-dependence">6.4.2. SAMPLE1 - Case of no concentration dependence</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample3-case-of-significant-concentration-dependence">6.4.3. SAMPLE3 - Case of significant concentration dependence</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-observation">9.1. Initial Observation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varied-binary-proportions">9.2. Varied Binary Proportions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varied-tertiary-proportions">9.3. Varied Tertiary Proportions</a></li>
 </ul>
             </nav>
         </div>
@@ -407,208 +401,132 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="rank-estimation">
-<span id="id1"></span><h1><span class="section-number">6. </span>Rank Estimation<a class="headerlink" href="#rank-estimation" title="Link to this heading">#</a></h1>
-<p>If interparticle interaction effects can be ignored, the rank of the data set (as a matrix) can be considered equal to the number of components. For example under such assumption, if the number of components is two, the rank is also two. In this sense, the rank of UV data is equal to the number of components because interparticle effects are known to appear only for X-ray data (in this UV vs. X-ray contrast).</p>
-<p>To put it practically, what we usually have to do is such that we will first idetify the component peaks by decomposition and then decide the rank of each component peak to be either 1 ro 2. For example, in the case of “SAMPLE1” data, the ranks of component peaks are suumarized in the table below in the order of elution.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-left"><p>component  peak</p></th>
-<th class="head text-right"><p>rank</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-left"><p>first (left) peak</p></td>
-<td class="text-right"><p>1</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>bump on the right side of the first peak</p></td>
-<td class="text-right"><p>1</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>second peak</p></td>
-<td class="text-right"><p>1</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The ranks are all 1 (and this estimation will be denoted by [1,1,1]) since there are observed no significant signs of interparticle effects.</p>
-<p>We will explore briefly about this rank estimation problem below.</p>
-<section id="learning-points">
-<h2><span class="section-number">6.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>component peak</p></li>
-<li><p>ssd.plot_component(ratio_curve=True)</p></li>
-<li><p>scds = decomposition.compute_scds()</p></li>
-<li><p>rank = scd_to_rank(scd)</p></li>
-</ul>
-</section>
-<section id="human-observation">
-<h2><span class="section-number">6.2. </span>Human Observation<a class="headerlink" href="#human-observation" title="Link to this heading">#</a></h2>
-<p>As can be speculated from the examples shown so far, human observation plays a key role in the rank estimation. Roughly speaking, the rank of data is at least the number of visible peaks.</p>
-<p>By observig the elution curves, humans can guess the number of components. For example as in the case of SAMPLE1 data, like decomposing into three seems better than two due to the bump in the right side of the first visible peak. See the difference in the following ddecompositons: the first one with two components (from default rough recongnition) and the second one with explictily specified three components.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="non-apparent-decomposition">
+<h1><span class="section-number">9. </span>Non-apparent Decomposition<a class="headerlink" href="#non-apparent-decomposition" title="Link to this heading">#</a></h1>
+<p>This chapter will discuss the cases where component peaks are not apparent.</p>
+<section id="initial-observation">
+<h2><span class="section-number">9.1. </span>Initial Observation<a class="headerlink" href="#initial-observation" title="Link to this heading">#</a></h2>
+<p>Let us first observe such an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.2.0 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.0 or higher.&quot;</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.3.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass_data version 0.3.0 or higher.&quot;</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE4</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE4</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">();</span>
-<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+<span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x2591f776330&gt;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
-<img alt="../../_images/4f42c1cb873f29a252c974971431c1705cd04000fc27626d995b1bdb6c174958.png" src="../../_images/4f42c1cb873f29a252c974971431c1705cd04000fc27626d995b1bdb6c174958.png" />
+<img alt="../../_images/f967fc2414d80edcf6b1bd8dab17a4939d053a993e3d6dfb013e1a36aab45b98.png" src="../../_images/f967fc2414d80edcf6b1bd8dab17a4939d053a993e3d6dfb013e1a36aab45b98.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition_nc3</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">decomposition_nc3</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgcurve</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">compute_rgcurve</span><span class="p">()</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 203/203 [00:44&lt;00:00,  4.59it/s]
+developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/ce218fb010c072c85cb88a6df84493ba988ce6b6b2fab2f635294d2702ab11ec.png" src="../../_images/ce218fb010c072c85cb88a6df84493ba988ce6b6b2fab2f635294d2702ab11ec.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x25920fc82c0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/93e2a0f11f157a80b7fe81d96b175b5dc7c269d143ff51c5e2b73e5039197efe.png" src="../../_images/93e2a0f11f157a80b7fe81d96b175b5dc7c269d143ff51c5e2b73e5039197efe.png" />
 </div>
 </div>
 </section>
-<section id="absorbance-scattering-ratio">
-<h2><span class="section-number">6.3. </span>Absorbance / Scattering Ratio<a class="headerlink" href="#absorbance-scattering-ratio" title="Link to this heading">#</a></h2>
-<p>Sometimes, it can be useful if we observe the curve of the ratio variation between the absorbance and the scattering. We can plot it with the ratio_curve option as shown below.</p>
+<section id="varied-binary-proportions">
+<h2><span class="section-number">9.2. </span>Varied Binary Proportions<a class="headerlink" href="#varied-binary-proportions" title="Link to this heading">#</a></h2>
+<p>If you are not sure about the default compositiun, you can compare the results with different proportions as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">ratio_curve</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tutorial Data - Compact Plot with Ratio Curve&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">num_trails</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">species1_proportions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_trails</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="n">species2_proportions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">num_trails</span><span class="p">)</span>
+<span class="n">proportions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">species1_proportions</span><span class="p">,</span> <span class="n">species2_proportions</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">proportions</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/aabbce0381679665841f962d8a785ea51226f9b43138ff07a6ec888e2a31f624.png" src="../../_images/aabbce0381679665841f962d8a785ea51226f9b43138ff07a6ec888e2a31f624.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.        , 1.        ],
+       [3.        , 1.28571429],
+       [3.        , 1.57142857],
+       [3.        , 1.85714286],
+       [3.        , 2.14285714],
+       [3.        , 2.42857143],
+       [3.        , 2.71428571],
+       [3.        , 3.        ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_varied_decompositions</span><span class="p">(</span><span class="n">proportions</span><span class="p">,</span> <span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">,</span> <span class="n">best</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Github\molass-library\molass\Decompose\VaryUtils.py:52: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend()
+</pre></div>
+</div>
+<img alt="../../_images/2d30c81b7df3cfd4ea1ba4c59da64079e79429716ef93643bd411f02a1b53876.png" src="../../_images/2d30c81b7df3cfd4ea1ba4c59da64079e79429716ef93643bd411f02a1b53876.png" />
+<img alt="../../_images/411b7384e2366bf28ef0ba50a128f248aeaa180d5956936b54db33936b54b2ca.png" src="../../_images/411b7384e2366bf28ef0ba50a128f248aeaa180d5956936b54db33936b54b2ca.png" />
 </div>
 </div>
 </section>
-<section id="concentration-dependence">
-<h2><span class="section-number">6.4. </span>Concentration Dependence<a class="headerlink" href="#concentration-dependence" title="Link to this heading">#</a></h2>
-<section id="relation-between-scd-and-rank">
-<h3><span class="section-number">6.4.1. </span>Relation between SCD and Rank<a class="headerlink" href="#relation-between-scd-and-rank" title="Link to this heading">#</a></h3>
-<p>Another method of rank estimastion is to compute the SCD - Score of Concentration Dependence - of each component peak. Using SCD’s, you can roughly distinguish the rank of a component peak according the the table below.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>SCD value range</p></th>
-<th class="head"><p>Rank distinction</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>less than 2</p></td>
-<td><p>probably  1</p></td>
-</tr>
-<tr class="row-odd"><td><p>between 2 and 5</p></td>
-<td><p>uncertain</p></td>
-</tr>
-<tr class="row-even"><td><p>greater than 5</p></td>
-<td><p>probably  2</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>We will give some examples of SCD computation below.</p>
-</section>
-<section id="sample1-case-of-no-concentration-dependence">
-<h3><span class="section-number">6.4.2. </span>SAMPLE1 - Case of no concentration dependence<a class="headerlink" href="#sample1-case-of-no-concentration-dependence" title="Link to this heading">#</a></h3>
+<section id="varied-tertiary-proportions">
+<h2><span class="section-number">9.3. </span>Varied Tertiary Proportions<a class="headerlink" href="#varied-tertiary-proportions" title="Link to this heading">#</a></h2>
+<p>If the existence of three components are suspected, do as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition_nc3</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
-<span class="n">scds</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">species3_proportions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_trails</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>
+<span class="n">proportions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">species1_proportions</span><span class="p">,</span> <span class="n">species2_proportions</span><span class="p">,</span> <span class="n">species3_proportions</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">proportions</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_range_list: peak.area_prop= 0.3955979320570714
-get_range_list: peak.area_prop= 0.12469259390088354
-get_range_list: peak.area_prop= 0.47970947404204495
-editor_ranges= [[[81, 89], [89, 98]], [[100, 109], [109, 119]], [[148, 157], [157, 166]]]
-select_matrix= [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-top_x_list= [89, 109, 157]
-legacy_ranges= [[PeakInfo(0,89,[0, ModelEvaluator(EGH(),array([ 0.21750687, 89.11281646,  7.4255121 ,  1.54282455]))]), [81, 89], [89, 98]], [PeakInfo(1,109,[1, ModelEvaluator(EGH(),array([7.83314739e-02, 1.09063680e+02, 8.21162942e+00, 2.30290416e+00]))]), [100, 109], [109, 119]], [PeakInfo(2,157,[2, ModelEvaluator(EGH(),array([ 5.31336614e-01,  1.56687457e+02,  8.21163164e+00, -4.60931414e-03]))]), [148, 157], [157, 166]]]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.5141964291028607, 4.1353581642850905, 0.6386070838487024]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.        , 1.        , 1.        ],
+       [3.        , 1.28571429, 1.        ],
+       [3.        , 1.57142857, 1.        ],
+       [3.        , 1.85714286, 1.        ],
+       [3.        , 2.14285714, 1.        ],
+       [3.        , 2.42857143, 1.        ],
+       [3.        , 2.71428571, 1.        ],
+       [3.        , 3.        , 1.        ]])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Backward.RankEstimator</span> <span class="kn">import</span> <span class="n">scd_to_rank</span>
-<span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="n">scd_to_rank</span><span class="p">(</span><span class="n">scd</span><span class="p">)</span> <span class="k">for</span> <span class="n">scd</span> <span class="ow">in</span> <span class="n">scds</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">scd</span><span class="p">,</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scds</span><span class="p">,</span> <span class="n">ranks</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCD: </span><span class="si">{</span><span class="n">scd</span><span class="si">}</span><span class="s2">, Rank: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_varied_decompositions</span><span class="p">(</span><span class="n">proportions</span><span class="p">,</span> <span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">,</span> <span class="n">best</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 0.5141964291028607, Rank: 1
-SCD: 4.1353581642850905, Rank: 1
-SCD: 0.6386070838487024, Rank: 1
-</pre></div>
+<img alt="../../_images/2b3c7769732f4e5f0c7179ef09cb9bf43e1663e8f3d14dabfa313e9f099d1a90.png" src="../../_images/2b3c7769732f4e5f0c7179ef09cb9bf43e1663e8f3d14dabfa313e9f099d1a90.png" />
+<img alt="../../_images/943306f1f04c30840757f511fe2c51dcb185cfd110ec429998b02803529141a6.png" src="../../_images/943306f1f04c30840757f511fe2c51dcb185cfd110ec429998b02803529141a6.png" />
 </div>
 </div>
-</div>
-</section>
-<section id="sample3-case-of-significant-concentration-dependence">
-<h3><span class="section-number">6.4.3. </span>SAMPLE3 - Case of significant concentration dependence<a class="headerlink" href="#sample3-case-of-significant-concentration-dependence" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE3</span>
-<span class="n">ssd3</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE3</span><span class="p">)</span>
-<span class="n">decomposition3</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
-<span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
-<span class="n">scds</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_range_list: peak.area_prop= 1.0
-editor_ranges= [[[167, 196], [196, 221]]]
-select_matrix= [[1]]
-top_x_list= [196]
-legacy_ranges= [[PeakInfo(0,196,[0, ModelEvaluator(EGH(),array([  0.37731962, 196.4855396 ,  22.96765958, -15.02150513]))]), [167, 196], [196, 221]]]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.136732388051838]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="n">scd_to_rank</span><span class="p">(</span><span class="n">scd</span><span class="p">)</span> <span class="k">for</span> <span class="n">scd</span> <span class="ow">in</span> <span class="n">scds</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">scd</span><span class="p">,</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scds</span><span class="p">,</span> <span class="n">ranks</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCD: </span><span class="si">{</span><span class="n">scd</span><span class="si">}</span><span class="s2">, Rank: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 5.136732388051838, Rank: 2
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -625,7 +543,7 @@ legacy_ranges= [[PeakInfo(0,196,[0, ModelEvaluator(EGH(),array([  0.37731962, 19
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters\06"
+            path: "./chapters\10"
         },
         predefinedOutput: true
     }
@@ -643,20 +561,20 @@ legacy_ranges= [[PeakInfo(0,196,[0, ModelEvaluator(EGH(),array([  0.37731962, 19
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../05/lrf.html"
+       href="../08/backward.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Low Rank Factorization</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Backward Compatibility</p>
       </div>
     </a>
     <a class="right-next"
-       href="../07/denss.html"
+       href="../11/advanced-models.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Electron Density Retrieval</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Advanced Elution Models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -676,15 +594,9 @@ legacy_ranges= [[PeakInfo(0,196,[0, ModelEvaluator(EGH(),array([  0.37731962, 19
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">6.1. Learning Points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">6.2. Human Observation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">6.3. Absorbance / Scattering Ratio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">6.4. Concentration Dependence</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relation-between-scd-and-rank">6.4.1. Relation between SCD and Rank</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample1-case-of-no-concentration-dependence">6.4.2. SAMPLE1 - Case of no concentration dependence</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample3-case-of-significant-concentration-dependence">6.4.3. SAMPLE3 - Case of significant concentration dependence</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-observation">9.1. Initial Observation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varied-binary-proportions">9.2. Varied Binary Proportions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varied-tertiary-proportions">9.3. Varied Tertiary Proportions</a></li>
 </ul>
   </nav></div>
 
