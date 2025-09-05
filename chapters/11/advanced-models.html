@@ -404,10 +404,10 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="advanced-elution-models">
 <h1><span class="section-number">10. </span>Advanced Elution Models<a class="headerlink" href="#advanced-elution-models" title="Link to this heading">#</a></h1>
 <p>Although we have not been explicit so far in the decomposition discussion, we have used an elution model called EGH – Exponential-Gaussian hybrid. The EGH model was introduced to enable asymmetric peak fitting. It is used as the default model because it is “mathematically simple and numerically stable.” However, it is so flexible that there is a risk it can fit unrealistic decompositions.
-To cope with this issue, advaced models are introduced.</p>
+To cope with this issue, advanced models are introduced.</p>
 <section id="preliminary-decomposition">
 <h2><span class="section-number">10.1. </span>Preliminary Decomposition<a class="headerlink" href="#preliminary-decomposition" title="Link to this heading">#</a></h2>
-<p>As an example, let us use the best result from the previous chapter. Note that the proportins [3, 1.86, 1] used below attained the minimum function value.</p>
+<p>As an example, let us use the best result using the default EGH model from the previous chapter. Note that the proportins [3, 1.86, 1] used below attained the minimum objective function value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
@@ -432,7 +432,7 @@ To cope with this issue, advaced models are introduced.</p>
 <p>One of the advanced models is SDM - Stochastic Dispersive Model. To use this model do as follows. Details of SDM will be described in <a class="reference external" href="https://nshimizu0721.github.io/molass-essence/">Molass Essence</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;SDM&#39;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;SDM&#39;</span><span class="p">)</span>
 <span class="n">sdm_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;SDM decomposition of sample4 from EGH result&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -447,7 +447,7 @@ To cope with this issue, advaced models are introduced.</p>
 <p>Another advanced models is EDM - Equilibrium Dispersive Model. To use this model do as follows. Details of SDM will be described in <a class="reference external" href="https://nshimizu0721.github.io/molass-essence/">Molass Essence</a>..</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;EDM&#39;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edm_decomposition</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_with_model</span><span class="p">(</span><span class="s1">&#39;EDM&#39;</span><span class="p">)</span>
 <span class="n">edm_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;EDM decomposition of sample4 from EGH result&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
