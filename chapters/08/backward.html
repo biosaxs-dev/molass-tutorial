@@ -451,7 +451,7 @@ developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&qu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 241/241 [01:06&lt;00:00,  3.61it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 241/241 [01:01&lt;00:00,  3.90it/s]
 </pre></div>
 </div>
 <img alt="../../_images/fb620e5f25aaed8ff8f2cf94193a739ad17b7518065c3111040786a846776182.png" src="../../_images/fb620e5f25aaed8ff8f2cf94193a739ad17b7518065c3111040786a846776182.png" />
@@ -484,7 +484,7 @@ legacy_ranges= [[PeakInfo(0,89,[0, ModelEvaluator(EGH(),array([ 0.21750687, 89.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 241/241 [01:26&lt;00:00,  2.77it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 241/241 [01:27&lt;00:00,  2.75it/s]
 </pre></div>
 </div>
 </div>
@@ -506,61 +506,63 @@ legacy_ranges= [[PeakInfo(0,89,[0, ModelEvaluator(EGH(),array([ 0.21750687, 89.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([1], (1, 1, True)):   0%|          | 0/31 [00:00&lt;?, ?it/s]2025-09-05 17:17:36 Controller initialized with temp_folder=d:\Github\molass-tutorial\chapters\08\report_folder\.temp
-2025-09-05 17:17:39 Progress unit 2 reported error at step 1.
-([1], (1, 1, True)):   6%|▋         | 2/31 [00:02&lt;00:35,  1.22s/it]
-2025-09-05 17:18:03 excessive step_done call!
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Win32 exception occurred releasing IUnknown at 0x000002084E50A7D0
+Win32 exception occurred releasing IUnknown at 0x00000208613313E0
+([1], (1, 1, True)):   3%|▎         | 1/31 [00:01&lt;00:44,  1.49s/it]2025-09-09 09:09:52 Controller initialized with temp_folder=d:\Github\molass-tutorial\chapters\08\report_folder\.temp
+2025-09-09 09:09:54 Progress unit 2 reported error at step 1.
+([1], (1, 1, True)):   6%|▋         | 2/31 [00:03&lt;00:54,  1.88s/it]
+2025-09-09 09:10:19 excessive step_done call!
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving Guinier Analysis Report to d:\Github\molass-tutorial\chapters\08\report_folder\.temp/--serial_analysis-temp.xlsx
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:09 Decomposition.get_cd_color_info: xr_ranks is None, using default ranks.
-2025-09-05 17:18:09 Starting LRF report generation...
-2025-09-05 17:18:09 cnv_ranges=[PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119)), PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] from ranges_=[[(82, 89), (89, 98)], [(101, 119)], [(148, 157), (157, 166)]]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:26 Decomposition.get_cd_color_info: xr_ranks is None, using default ranks.
+2025-09-09 09:10:26 Starting LRF report generation...
+2025-09-09 09:10:26 cnv_ranges=[PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119)), PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] from ranges_=[[(82, 89), (89, 98)], [(101, 119)], [(148, 157), (157, 166)]]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>applied ranges: [[(82, 89), (89, 98)], [(101, 119)], [(148, 157), (157, 166)]]
 report ranges: [[[82, 89], [89, 98]], [[101, 119]], [[148, 157], [157, 166]]]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:11 Converting to Guinier result array...
-2025-09-05 17:18:11 Conversion to Guinier result array completed.
-2025-09-05 17:18:11 lrf executer has been constructed with conc_factor=8.155.
-2025-09-05 17:18:11 ZeroExtrapolator: use_elution_models=True
-2025-09-05 17:18:11 cnv_ranges=[PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119)), PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))], num_ranges=5
-2025-09-05 17:18:11 lrf solver has been constructed with conc_factor 8.155, Rg=None.
-2025-09-05 17:18:11 conc_depend has been set to 1
-2025-09-05 17:18:11 lrf_bound_correction=1
-2025-09-05 17:18:11 lrf solver has been constructed with conc_factor 8.155, Rg=None.
-2025-09-05 17:18:11 conc_depend has been set to 1
-2025-09-05 17:18:11 pno_map=[0, 1, 2], scd_colors=[&#39;green&#39;, &#39;green&#39;, &#39;green&#39;]
-2025-09-05 17:18:11 range_indeces have been created as follows
-2025-09-05 17:18:11 [0] [0, 82, 89]
-2025-09-05 17:18:11 [1] [0, 89, 98]
-2025-09-05 17:18:11 [2] [1, 101, 119]
-2025-09-05 17:18:11 [3] [2, 148, 157]
-2025-09-05 17:18:11 [4] [2, 157, 166]
-2025-09-05 17:18:11 pfoot_indeces have been created as follows
-2025-09-05 17:18:11 [0] [0, 73, 110]
-2025-09-05 17:18:11 [1] [0, 73, 110]
-2025-09-05 17:18:11 [2] [1, 92, 133]
-2025-09-05 17:18:11 [3] [2, 137, 177]
-2025-09-05 17:18:11 [4] [2, 137, 177]
-2025-09-05 17:18:11 required_peakset_infos are created as follows
-2025-09-05 17:18:11 [0] [0, 0, {0}]
-2025-09-05 17:18:11 [1] [0, 0, {0, 1}]
-2025-09-05 17:18:11 [2] [1, 1, {0, 1}]
-2025-09-05 17:18:11 [3] [2, 0, {2}]
-2025-09-05 17:18:11 [4] [2, 0, {2}]
-2025-09-05 17:18:11 selected 0-th range has 1 element(s).
-2025-09-05 17:18:11 solve_range called with lrf_rank=1
-2025-09-05 17:18:11 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98))] with concentration_datatype=2
-2025-09-05 17:18:11 C matrix data.shape is (1, 8)
-2025-09-05 17:18:11 pno=0, nth=0, cdl_list=[1], use_elution_models=True
-2025-09-05 17:18:11 SVD-reconstructed with rank=1 in range [82, 90).
-2025-09-05 17:18:11 solving rank 1 factorization of M into P, C with shapes (984, 8) = (984, 1) @ (1, 8)
-2025-09-05 17:18:11 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:28 Converting to Guinier result array...
+2025-09-09 09:10:28 Conversion to Guinier result array completed.
+2025-09-09 09:10:28 lrf executer has been constructed with conc_factor=8.155.
+2025-09-09 09:10:28 ZeroExtrapolator: use_elution_models=True
+2025-09-09 09:10:28 cnv_ranges=[PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119)), PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))], num_ranges=5
+2025-09-09 09:10:28 lrf solver has been constructed with conc_factor 8.155, Rg=None.
+2025-09-09 09:10:28 conc_depend has been set to 1
+2025-09-09 09:10:28 lrf_bound_correction=1
+2025-09-09 09:10:28 lrf solver has been constructed with conc_factor 8.155, Rg=None.
+2025-09-09 09:10:28 conc_depend has been set to 1
+2025-09-09 09:10:28 pno_map=[0, 1, 2], scd_colors=[&#39;green&#39;, &#39;green&#39;, &#39;green&#39;]
+2025-09-09 09:10:28 range_indeces have been created as follows
+2025-09-09 09:10:28 [0] [0, 82, 89]
+2025-09-09 09:10:28 [1] [0, 89, 98]
+2025-09-09 09:10:28 [2] [1, 101, 119]
+2025-09-09 09:10:28 [3] [2, 148, 157]
+2025-09-09 09:10:28 [4] [2, 157, 166]
+2025-09-09 09:10:28 pfoot_indeces have been created as follows
+2025-09-09 09:10:28 [0] [0, 73, 110]
+2025-09-09 09:10:28 [1] [0, 73, 110]
+2025-09-09 09:10:28 [2] [1, 92, 133]
+2025-09-09 09:10:28 [3] [2, 137, 177]
+2025-09-09 09:10:28 [4] [2, 137, 177]
+2025-09-09 09:10:28 required_peakset_infos are created as follows
+2025-09-09 09:10:28 [0] [0, 0, {0}]
+2025-09-09 09:10:28 [1] [0, 0, {0, 1}]
+2025-09-09 09:10:28 [2] [1, 1, {0, 1}]
+2025-09-09 09:10:28 [3] [2, 0, {2}]
+2025-09-09 09:10:28 [4] [2, 0, {2}]
+2025-09-09 09:10:28 selected 0-th range has 1 element(s).
+2025-09-09 09:10:28 solve_range called with lrf_rank=1
+2025-09-09 09:10:28 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98))] with concentration_datatype=2
+2025-09-09 09:10:28 C matrix data.shape is (1, 8)
+2025-09-09 09:10:28 pno=0, nth=0, cdl_list=[1], use_elution_models=True
+2025-09-09 09:10:28 SVD-reconstructed with rank=1 in range [82, 90).
+2025-09-09 09:10:28 solving rank 1 factorization of M into P, C with shapes (984, 8) = (984, 1) @ (1, 8)
+2025-09-09 09:10:28 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>indeces[0]= [82 83 84 85 86 87 88 89]
@@ -576,17 +578,17 @@ Optimization terminated successfully.
          Iterations: 0
          Function evaluations: 1
          Gradient evaluations: 1
-It took  0.0 num_iterations= 0
+It took  0.0010044574737548828 num_iterations= 0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:12 selected 1-th range has 2 element(s).
-2025-09-05 17:18:12 solve_range called with lrf_rank=1
-2025-09-05 17:18:12 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119))] with concentration_datatype=2
-2025-09-05 17:18:12 C matrix data.shape is (2, 10)
-2025-09-05 17:18:12 pno=0, nth=0, cdl_list=[1, 1], use_elution_models=True
-2025-09-05 17:18:12 SVD-reconstructed with rank=2 in range [89, 99).
-2025-09-05 17:18:12 solving rank 2 factorization of M into P, C with shapes (984, 10) = (984, 2) @ (2, 10)
-2025-09-05 17:18:12 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:29 selected 1-th range has 2 element(s).
+2025-09-09 09:10:29 solve_range called with lrf_rank=1
+2025-09-09 09:10:29 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119))] with concentration_datatype=2
+2025-09-09 09:10:29 C matrix data.shape is (2, 10)
+2025-09-09 09:10:29 pno=0, nth=0, cdl_list=[1, 1], use_elution_models=True
+2025-09-09 09:10:29 SVD-reconstructed with rank=2 in range [89, 99).
+2025-09-09 09:10:29 solving rank 2 factorization of M into P, C with shapes (984, 10) = (984, 2) @ (2, 10)
+2025-09-09 09:10:29 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
@@ -597,14 +599,14 @@ It took  0.0 num_iterations= 0
 It took  0.0 num_iterations= 0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:13 selected 2-th range has 2 element(s).
-2025-09-05 17:18:13 solve_range called with lrf_rank=1
-2025-09-05 17:18:13 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119))] with concentration_datatype=2
-2025-09-05 17:18:13 C matrix data.shape is (2, 19)
-2025-09-05 17:18:13 pno=1, nth=1, cdl_list=[1, 1], use_elution_models=True
-2025-09-05 17:18:13 SVD-reconstructed with rank=2 in range [101, 120).
-2025-09-05 17:18:13 solving rank 2 factorization of M into P, C with shapes (984, 19) = (984, 2) @ (2, 19)
-2025-09-05 17:18:13 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:30 selected 2-th range has 2 element(s).
+2025-09-09 09:10:30 solve_range called with lrf_rank=1
+2025-09-09 09:10:30 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119))] with concentration_datatype=2
+2025-09-09 09:10:30 C matrix data.shape is (2, 19)
+2025-09-09 09:10:30 pno=1, nth=1, cdl_list=[1, 1], use_elution_models=True
+2025-09-09 09:10:30 SVD-reconstructed with rank=2 in range [101, 120).
+2025-09-09 09:10:30 solving rank 2 factorization of M into P, C with shapes (984, 19) = (984, 2) @ (2, 19)
+2025-09-09 09:10:30 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
@@ -612,17 +614,17 @@ It took  0.0 num_iterations= 0
          Iterations: 0
          Function evaluations: 1
          Gradient evaluations: 1
-It took  0.008740663528442383 num_iterations= 0
+It took  0.0 num_iterations= 0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:14 selected 3-th range has 1 element(s).
-2025-09-05 17:18:14 solve_range called with lrf_rank=1
-2025-09-05 17:18:14 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
-2025-09-05 17:18:14 C matrix data.shape is (1, 10)
-2025-09-05 17:18:14 pno=2, nth=0, cdl_list=[1], use_elution_models=True
-2025-09-05 17:18:14 SVD-reconstructed with rank=1 in range [148, 158).
-2025-09-05 17:18:14 solving rank 1 factorization of M into P, C with shapes (984, 10) = (984, 1) @ (1, 10)
-2025-09-05 17:18:14 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:31 selected 3-th range has 1 element(s).
+2025-09-09 09:10:31 solve_range called with lrf_rank=1
+2025-09-09 09:10:31 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
+2025-09-09 09:10:31 C matrix data.shape is (1, 10)
+2025-09-09 09:10:31 pno=2, nth=0, cdl_list=[1], use_elution_models=True
+2025-09-09 09:10:31 SVD-reconstructed with rank=1 in range [148, 158).
+2025-09-09 09:10:31 solving rank 1 factorization of M into P, C with shapes (984, 10) = (984, 1) @ (1, 10)
+2025-09-09 09:10:31 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
@@ -630,17 +632,17 @@ It took  0.008740663528442383 num_iterations= 0
          Iterations: 0
          Function evaluations: 1
          Gradient evaluations: 1
-It took  0.002001523971557617 num_iterations= 0
+It took  0.0 num_iterations= 0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:16 selected 4-th range has 1 element(s).
-2025-09-05 17:18:16 solve_range called with lrf_rank=1
-2025-09-05 17:18:16 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
-2025-09-05 17:18:16 C matrix data.shape is (1, 10)
-2025-09-05 17:18:16 pno=2, nth=0, cdl_list=[1], use_elution_models=True
-2025-09-05 17:18:16 SVD-reconstructed with rank=1 in range [157, 167).
-2025-09-05 17:18:16 solving rank 1 factorization of M into P, C with shapes (984, 10) = (984, 1) @ (1, 10)
-2025-09-05 17:18:16 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:32 selected 4-th range has 1 element(s).
+2025-09-09 09:10:32 solve_range called with lrf_rank=1
+2025-09-09 09:10:32 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
+2025-09-09 09:10:32 C matrix data.shape is (1, 10)
+2025-09-09 09:10:32 pno=2, nth=0, cdl_list=[1], use_elution_models=True
+2025-09-09 09:10:32 SVD-reconstructed with rank=1 in range [157, 167).
+2025-09-09 09:10:32 solving rank 1 factorization of M into P, C with shapes (984, 10) = (984, 1) @ (1, 10)
+2025-09-09 09:10:32 solved with aq_smoothness=False, aq_positivity=False resulting into iterations=0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
@@ -648,13 +650,13 @@ It took  0.002001523971557617 num_iterations= 0
          Iterations: 0
          Function evaluations: 1
          Gradient evaluations: 1
-It took  0.0019998550415039062 num_iterations= 0
+It took  0.010687828063964844 num_iterations= 0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:17 selected 0-th range has 1 element(s).
-2025-09-05 17:18:17 solve_range called with lrf_rank=2
-2025-09-05 17:18:17 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98))] with concentration_datatype=2
-2025-09-05 17:18:17 C matrix data.shape is (2, 8)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:34 selected 0-th range has 1 element(s).
+2025-09-09 09:10:34 solve_range called with lrf_rank=2
+2025-09-09 09:10:34 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98))] with concentration_datatype=2
+2025-09-09 09:10:34 C matrix data.shape is (2, 8)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>solver finished.
@@ -670,11 +672,11 @@ Number of experimental Shannon channels: 22
 Number of calculated Shannon channels: 22
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:20 BoundedLrfSolver solved range 82-90 with lrf_rank=2
-2025-09-05 17:18:20 selected 1-th range has 2 element(s).
-2025-09-05 17:18:20 solve_range called with lrf_rank=2
-2025-09-05 17:18:20 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119))] with concentration_datatype=2
-2025-09-05 17:18:20 C matrix data.shape is (4, 10)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:36 BoundedLrfSolver solved range 82-90 with lrf_rank=2
+2025-09-09 09:10:36 selected 1-th range has 2 element(s).
+2025-09-09 09:10:36 solve_range called with lrf_rank=2
+2025-09-09 09:10:36 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119))] with concentration_datatype=2
+2025-09-09 09:10:36 C matrix data.shape is (4, 10)
 D:\Github\molass-legacy\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
   return L/(1 + np.exp(-k*(x-x0))) + b
 D:\Github\molass-legacy\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
@@ -703,11 +705,11 @@ Number of experimental Shannon channels: 15
 Number of calculated Shannon channels: 15
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:22 BoundedLrfSolver solved range 89-99 with lrf_rank=2
-2025-09-05 17:18:22 selected 2-th range has 2 element(s).
-2025-09-05 17:18:22 solve_range called with lrf_rank=2
-2025-09-05 17:18:22 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119))] with concentration_datatype=2
-2025-09-05 17:18:22 C matrix data.shape is (4, 19)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:38 BoundedLrfSolver solved range 89-99 with lrf_rank=2
+2025-09-09 09:10:38 selected 2-th range has 2 element(s).
+2025-09-09 09:10:38 solve_range called with lrf_rank=2
+2025-09-09 09:10:38 creating C matrix in ranges [PairedRange(PeakInfo(0,89,&#39;elm_recs&#39;),(82, 89),(89, 98)), PairedRange(PeakInfo(1,109,&#39;elm_recs&#39;),(101, 119))] with concentration_datatype=2
+2025-09-09 09:10:38 C matrix data.shape is (4, 19)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
@@ -722,11 +724,11 @@ Number of experimental Shannon channels: 25
 Number of calculated Shannon channels: 25
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:25 BoundedLrfSolver solved range 101-120 with lrf_rank=2
-2025-09-05 17:18:25 selected 3-th range has 1 element(s).
-2025-09-05 17:18:25 solve_range called with lrf_rank=2
-2025-09-05 17:18:25 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
-2025-09-05 17:18:25 C matrix data.shape is (2, 10)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:40 BoundedLrfSolver solved range 101-120 with lrf_rank=2
+2025-09-09 09:10:40 selected 3-th range has 1 element(s).
+2025-09-09 09:10:40 solve_range called with lrf_rank=2
+2025-09-09 09:10:40 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
+2025-09-09 09:10:40 C matrix data.shape is (2, 10)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
@@ -741,11 +743,11 @@ Number of experimental Shannon channels: 12
 Number of calculated Shannon channels: 12
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:27 BoundedLrfSolver solved range 148-158 with lrf_rank=2
-2025-09-05 17:18:27 selected 4-th range has 1 element(s).
-2025-09-05 17:18:27 solve_range called with lrf_rank=2
-2025-09-05 17:18:27 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
-2025-09-05 17:18:27 C matrix data.shape is (2, 10)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:43 BoundedLrfSolver solved range 148-158 with lrf_rank=2
+2025-09-09 09:10:43 selected 4-th range has 1 element(s).
+2025-09-09 09:10:43 solve_range called with lrf_rank=2
+2025-09-09 09:10:43 creating C matrix in ranges [PairedRange(PeakInfo(2,157,&#39;elm_recs&#39;),(148, 157),(157, 166))] with concentration_datatype=2
+2025-09-09 09:10:43 C matrix data.shape is (2, 10)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
@@ -760,14 +762,14 @@ Number of experimental Shannon channels: 10
 Number of calculated Shannon channels: 10
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:30 BoundedLrfSolver solved range 157-167 with lrf_rank=2
-2025-09-05 17:18:30 [0-0] color=green, lrf_rank=1
-2025-09-05 17:18:30 [2-3] color=green, lrf_rank=1
-2025-09-05 17:18:30 ZeroExtrapolator: using LRF Ppol.
-2025-09-05 17:18:30 extrapolating for [[[82, 89], [89, 98]], [[101, 119]], [[148, 157], [157, 166]]]
-2025-09-05 17:18:30 extrapolation start for the 0th peak ad(0) with range (82, 89)
-2025-09-05 17:18:30 Guinier boundary is assumed at Q[72]=0.0446.
-2025-09-05 17:18:30 1st peak asc-side extrapolation done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:45 BoundedLrfSolver solved range 157-167 with lrf_rank=2
+2025-09-09 09:10:45 [0-0] color=green, lrf_rank=1
+2025-09-09 09:10:45 [2-3] color=green, lrf_rank=1
+2025-09-09 09:10:45 ZeroExtrapolator: using LRF Ppol.
+2025-09-09 09:10:45 extrapolating for [[[82, 89], [89, 98]], [[101, 119]], [[148, 157], [157, 166]]]
+2025-09-09 09:10:45 extrapolation start for the 0th peak ad(0) with range (82, 89)
+2025-09-09 09:10:45 Guinier boundary is assumed at Q[72]=0.0446.
+2025-09-09 09:10:45 1st peak asc-side extrapolation done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>solver finished.
@@ -788,8 +790,8 @@ data_matrix.shape= (8, 984)
   1.79  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00088_avg.dat
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:42 1st peak asc-side atsas result: Rg=36.2128 I(0)=0.122869
-2025-09-05 17:18:42 1st peak asc-side rg re-estimation done with extrapolated Rg=35.7 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:10:57 1st peak asc-side atsas result: Rg=36.2128 I(0)=0.122869
+2025-09-09 09:10:57 1st peak asc-side rg re-estimation done with extrapolated Rg=35.7 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 8 , zx_rows= 13
@@ -800,7 +802,7 @@ MaximumScale= 1.0
 work_row= 1005
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:48 1st peak asc-side book done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:11:03 1st peak asc-side book done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
@@ -810,10 +812,10 @@ MaximumScale= 1.0
 work_row= 536
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:18:52 1st peak asc-side atsas book done.
-2025-09-05 17:18:52 extrapolation start for the 0th peak ad(1) with range (89, 98)
-2025-09-05 17:18:52 Guinier boundary is assumed at Q[72]=0.0446.
-2025-09-05 17:18:52 1st peak desc-side extrapolation done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:11:07 1st peak asc-side atsas book done.
+2025-09-09 09:11:07 extrapolation start for the 0th peak ad(1) with range (89, 98)
+2025-09-09 09:11:07 Guinier boundary is assumed at Q[72]=0.0446.
+2025-09-09 09:11:07 1st peak desc-side extrapolation done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data_matrix.shape= (10, 984)
@@ -830,8 +832,8 @@ work_row= 536
   1.78  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00089_avg.dat
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:19:10 1st peak desc-side atsas result: Rg=36.0713 I(0)=0.12399
-2025-09-05 17:19:10 1st peak desc-side rg re-estimation done with extrapolated Rg=36 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:11:25 1st peak desc-side atsas result: Rg=36.0713 I(0)=0.12399
+2025-09-09 09:11:25 1st peak desc-side rg re-estimation done with extrapolated Rg=36 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 10 , zx_rows= 15
@@ -842,7 +844,7 @@ MaximumScale= 1.0
 work_row= 1007
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:19:16 1st peak desc-side book done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:11:32 1st peak desc-side book done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
@@ -852,7 +854,7 @@ MaximumScale= 1.0
 work_row= 532
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:19:20 1st peak desc-side atsas book done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:11:36 1st peak desc-side atsas book done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num_rows= 984
@@ -862,10 +864,10 @@ MaximumScale= 1.0
 work_row= 991
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:19:23 1st peak overlay book done.
-2025-09-05 17:19:23 extrapolation start for the 1st peak ad(0) with range (101, 119)
-2025-09-05 17:19:23 Guinier boundary is assumed at Q[106]=0.0589.
-2025-09-05 17:19:23 2nd peak both-side extrapolation done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:11:39 1st peak overlay book done.
+2025-09-09 09:11:39 extrapolation start for the 1st peak ad(0) with range (101, 119)
+2025-09-09 09:11:39 Guinier boundary is assumed at Q[106]=0.0589.
+2025-09-09 09:11:39 2nd peak both-side extrapolation done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data_matrix.shape= (19, 984)
@@ -891,8 +893,8 @@ work_row= 991
   0.89  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00101_avg.dat
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:19:45 2nd peak both-side atsas result: Rg=32.379 I(0)=0.052383
-2025-09-05 17:19:45 2nd peak both-side rg re-estimation done with extrapolated Rg=33.1 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:12:02 2nd peak both-side atsas result: Rg=32.379 I(0)=0.052383
+2025-09-09 09:12:02 2nd peak both-side rg re-estimation done with extrapolated Rg=33.1 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 19 , zx_rows= 24
@@ -903,7 +905,7 @@ MaximumScale= 1.0
 work_row= 1016
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:19:51 2nd peak both-side book done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:12:08 2nd peak both-side book done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
@@ -913,10 +915,10 @@ MaximumScale= 1.0
 work_row= 578
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:19:56 2nd peak both-side atsas book done.
-2025-09-05 17:19:56 extrapolation start for the 2nd peak ad(0) with range (148, 157)
-2025-09-05 17:19:56 Guinier boundary is assumed at Q[124]=0.0664.
-2025-09-05 17:19:56 3rd peak asc-side extrapolation done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:12:13 2nd peak both-side atsas book done.
+2025-09-09 09:12:13 extrapolation start for the 2nd peak ad(0) with range (148, 157)
+2025-09-09 09:12:13 Guinier boundary is assumed at Q[124]=0.0664.
+2025-09-09 09:12:13 3rd peak asc-side extrapolation done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data_matrix.shape= (10, 984)
@@ -933,8 +935,8 @@ work_row= 578
   4.29  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00157_avg.dat
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:20:17 3rd peak asc-side atsas result: Rg=24.3438 I(0)=0.121416
-2025-09-05 17:20:17 3rd peak asc-side rg re-estimation done with extrapolated Rg=24.1 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:12:34 3rd peak asc-side atsas result: Rg=24.3438 I(0)=0.121416
+2025-09-09 09:12:34 3rd peak asc-side rg re-estimation done with extrapolated Rg=24.1 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 10 , zx_rows= 15
@@ -945,7 +947,7 @@ MaximumScale= 1.0
 work_row= 1007
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:20:23 3rd peak asc-side book done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:12:40 3rd peak asc-side book done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
@@ -955,10 +957,10 @@ MaximumScale= 1.0
 work_row= 793
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:20:29 3rd peak asc-side atsas book done.
-2025-09-05 17:20:29 extrapolation start for the 2nd peak ad(1) with range (157, 166)
-2025-09-05 17:20:29 Guinier boundary is assumed at Q[122]=0.0656.
-2025-09-05 17:20:29 3rd peak desc-side extrapolation done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:12:47 3rd peak asc-side atsas book done.
+2025-09-09 09:12:47 extrapolation start for the 2nd peak ad(1) with range (157, 166)
+2025-09-09 09:12:47 Guinier boundary is assumed at Q[122]=0.0656.
+2025-09-09 09:12:47 3rd peak desc-side extrapolation done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data_matrix.shape= (10, 984)
@@ -975,8 +977,8 @@ work_row= 793
   4.29  (reference)         d:\Github\molass-tutorial\chapters\08\report_folder\averaged/PREFIX1_00157_avg.dat
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:20:50 3rd peak desc-side atsas result: Rg=24.2569 I(0)=0.120737
-2025-09-05 17:20:50 3rd peak desc-side rg re-estimation done with extrapolated Rg=24.1 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:13:08 3rd peak desc-side atsas result: Rg=24.2569 I(0)=0.120737
+2025-09-09 09:13:08 3rd peak desc-side rg re-estimation done with extrapolated Rg=24.1 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nx_rows= 10 , zx_rows= 15
@@ -987,7 +989,7 @@ MaximumScale= 1.0
 work_row= 1007
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:20:57 3rd peak desc-side book done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:13:15 3rd peak desc-side book done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self.exe_path= C:\Program Files\ATSAS-3.1.3\bin\datgnom.exe
@@ -997,7 +999,7 @@ MaximumScale= 1.0
 work_row= 793
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:21:03 3rd peak desc-side atsas book done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:13:21 3rd peak desc-side atsas book done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num_rows= 984
@@ -1007,27 +1009,27 @@ MaximumScale= 1.0
 work_row= 991
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:21:05 3rd peak overlay book done.
-2025-09-05 17:21:05 d:\Github\molass-tutorial\chapters\08\report_folder\averaged has been removed.
-2025-09-05 17:21:05 premature all_done call!
-2025-09-05 17:21:05 Generating summary report...
-2025-09-05 17:21:05 Summary includes low quality results. Be aware.
-2025-09-05 17:21:05 add_summary_format_setting start for d:\Github\molass-tutorial\chapters\08\report_folder\.temp/--summary.xlsx(Summary for Publication)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:13:23 3rd peak overlay book done.
+2025-09-09 09:13:23 d:\Github\molass-tutorial\chapters\08\report_folder\averaged has been removed.
+2025-09-09 09:13:23 premature all_done call!
+2025-09-09 09:13:23 Generating summary report...
+2025-09-09 09:13:23 Summary includes low quality results. Be aware.
+2025-09-09 09:13:24 add_summary_format_setting start for d:\Github\molass-tutorial\chapters\08\report_folder\.temp/--summary.xlsx(Summary for Publication)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Errno 2] No such file or directory: &#39;C:\\Program Files\\Python312\\Lib\\site-packages\\molass_data\\SAMPLE1/Xray_Scattering_Info.txt&#39;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:21:08 summary book done.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:13:27 summary book done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>path= d:\Github\molass-tutorial\chapters\08\report_folder\.temp/--summary.csv
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-05 17:21:23 books merge done.
-2025-09-05 17:21:23 Summary report generation completed.
-2025-09-05 17:21:23 premature all_done call!
-Killed the remaining process pid=36748
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-09-09 09:13:40 books merge done.
+2025-09-09 09:13:40 Summary report generation completed.
+2025-09-09 09:13:40 premature all_done call!
+Killed the remaining process pid=8000
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SerialData.__del__ ok

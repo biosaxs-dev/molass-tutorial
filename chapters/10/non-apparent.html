@@ -418,17 +418,12 @@ document.write(`
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE4</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">()</span>
+<span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1d81ccdaf00&gt;
-</pre></div>
 </div>
-<img alt="../../_images/f967fc2414d80edcf6b1bd8dab17a4939d053a993e3d6dfb013e1a36aab45b98.png" src="../../_images/f967fc2414d80edcf6b1bd8dab17a4939d053a993e3d6dfb013e1a36aab45b98.png" />
-</div>
-</div>
+<p>At first glance, the peak may seem to consist of a single component. For a more detailed observation, let us assume it may consist of two components and add the Rg curve.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgcurve</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">compute_rgcurve</span><span class="p">()</span>
@@ -436,16 +431,6 @@ document.write(`
 <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 203/203 [00:48&lt;00:00,  4.17it/s]
-developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1d81f9dfe90&gt;
-</pre></div>
-</div>
-<img alt="../../_images/93e2a0f11f157a80b7fe81d96b175b5dc7c269d143ff51c5e2b73e5039197efe.png" src="../../_images/93e2a0f11f157a80b7fe81d96b175b5dc7c269d143ff51c5e2b73e5039197efe.png" />
 </div>
 </div>
 </section>
@@ -463,32 +448,12 @@ developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&qu
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.        , 1.        ],
-       [3.        , 1.28571429],
-       [3.        , 1.57142857],
-       [3.        , 1.85714286],
-       [3.        , 2.14285714],
-       [3.        , 2.42857143],
-       [3.        , 2.71428571],
-       [3.        , 3.        ]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_varied_decompositions</span><span class="p">(</span><span class="n">proportions</span><span class="p">,</span> <span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">,</span> <span class="n">best</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Github\molass-library\molass\Decompose\VaryUtils.py:52: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-  ax.legend()
-</pre></div>
-</div>
-<img alt="../../_images/2d30c81b7df3cfd4ea1ba4c59da64079e79429716ef93643bd411f02a1b53876.png" src="../../_images/2d30c81b7df3cfd4ea1ba4c59da64079e79429716ef93643bd411f02a1b53876.png" />
-<img alt="../../_images/411b7384e2366bf28ef0ba50a128f248aeaa180d5956936b54db33936b54b2ca.png" src="../../_images/411b7384e2366bf28ef0ba50a128f248aeaa180d5956936b54db33936b54b2ca.png" />
 </div>
 </div>
 </section>
@@ -503,28 +468,12 @@ developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&qu
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.        , 1.        , 1.        ],
-       [3.        , 1.28571429, 1.        ],
-       [3.        , 1.57142857, 1.        ],
-       [3.        , 1.85714286, 1.        ],
-       [3.        , 2.14285714, 1.        ],
-       [3.        , 2.42857143, 1.        ],
-       [3.        , 2.71428571, 1.        ],
-       [3.        , 3.        , 1.        ]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_varied_decompositions</span><span class="p">(</span><span class="n">proportions</span><span class="p">,</span> <span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">,</span> <span class="n">best</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/2b3c7769732f4e5f0c7179ef09cb9bf43e1663e8f3d14dabfa313e9f099d1a90.png" src="../../_images/2b3c7769732f4e5f0c7179ef09cb9bf43e1663e8f3d14dabfa313e9f099d1a90.png" />
-<img alt="../../_images/943306f1f04c30840757f511fe2c51dcb185cfd110ec429998b02803529141a6.png" src="../../_images/943306f1f04c30840757f511fe2c51dcb185cfd110ec429998b02803529141a6.png" />
 </div>
 </div>
 </section>

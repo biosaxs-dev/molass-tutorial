@@ -397,7 +397,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-refine">1.4. How to Refine</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-customize">1.5. How to Customize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-export">1.5. How to Export</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-customize">1.6. How to Customize</a></li>
 </ul>
             </nav>
         </div>
@@ -486,7 +487,7 @@ We can execute these steps and show the results as follows. The details of each 
 developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/212ccf6d034042586f782512f713e8d532eb6991a1f35560fc79a9bb3363b666.png" src="../../_images/212ccf6d034042586f782512f713e8d532eb6991a1f35560fc79a9bb3363b666.png" />
+<img alt="../../_images/99d632b03b936f2701ec4042d5313d072260ad9dbb900e9e8125f0d9834f0358.png" src="../../_images/99d632b03b936f2701ec4042d5313d072260ad9dbb900e9e8125f0d9834f0358.png" />
 </div>
 </div>
 </section>
@@ -494,7 +495,7 @@ developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&qu
 <h3><span class="section-number">1.3.3. </span>Running DENSS<a class="headerlink" href="#running-denss" title="Link to this heading">#</a></h3>
 <p>From the result of LRF, which is expressed as “lrf_info” here in the python code, we can obtain scattering curves of each component.
 Once you have a well-conditioned scattering curve, you can reconstruct the original electron density distribution using an appropriate SAXS tool.
-In Molass Library, you can use <a class="reference external" href="https://tdgrant.com/">DENSS</a> directly as follows.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+In Molass Library, you can use <a class="reference external" href="https://tdgrant.com/">DENSS</a> directly as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">run_denss</span>
@@ -508,17 +509,17 @@ In Molass Library, you can use <a class="reference external" href="https://tdgra
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
 WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
-Dmax = 142.50
+Dmax = 142.89
 Number of experimental Shannon channels: 19
 Number of calculated Shannon channels: 58
 
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   5.56e-02  86.57        1655886            
+  620   5.72e-02  85.95        1669519            
 switched to shrinkwrap by density threshold = 0.2000
-  999   3.50e-03  58.11        466724          EC: 2 -&gt; 1 
- 2344   1.63e-05  36.27        336184          
+  999   1.02e-04  35.46        392739          EC: 1 -&gt; 1 
+ 2289   4.70e-05  35.67        325129          
 </pre></div>
 </div>
 </div>
@@ -538,7 +539,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/71731470436d532c500946731baed94beaac5baa80c2a13f9aa0f2ea0131dbaa.png" src="../../_images/71731470436d532c500946731baed94beaac5baa80c2a13f9aa0f2ea0131dbaa.png" />
+<img alt="../../_images/0ccdf86f620341a1400b7634c8e026fb82f819bcda65bd529a3f5c85d478d4fa.png" src="../../_images/0ccdf86f620341a1400b7634c8e026fb82f819bcda65bd529a3f5c85d478d4fa.png" />
 </div>
 </div>
 </section>
@@ -565,21 +566,28 @@ switched to shrinkwrap by density threshold = 0.2000
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/a14ba3f2f013e467126d902e080eaf9ab8c2e3007e4b273c1c153c204c8c6639.png" src="../../_images/a14ba3f2f013e467126d902e080eaf9ab8c2e3007e4b273c1c153c204c8c6639.png" />
+<img alt="../../_images/cfb4385b7300905f1b2165aa8b67f2d77078b074c84ce5bbf723c2884a3fc93e.png" src="../../_images/cfb4385b7300905f1b2165aa8b67f2d77078b074c84ce5bbf723c2884a3fc93e.png" />
 </div>
 </div>
 <p>Molass Library provides several other options and methods for better estimation of scattering curves which we will discuss one by one in later chapters.</p>
 </section>
+<section id="how-to-export">
+<h2><span class="section-number">1.5. </span>How to Export<a class="headerlink" href="#how-to-export" title="Link to this heading">#</a></h2>
+<p>As we have passed the decomposed data to DENSS above, <code class="docutils literal notranslate"><span class="pre">jcurve_array</span></code> is the commonly used style which consists of the three column vectors, namely, [qvector, intensities, errors]. Do as follows, for example, to export the all decomposed scattering curves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">simply_refined_decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()):</span>
+    <span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">comp</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;component_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">.dat&quot;</span><span class="p">,</span> <span class="n">jcurve_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="how-to-customize">
-<h2><span class="section-number">1.5. </span>How to Customize<a class="headerlink" href="#how-to-customize" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.6. </span>How to Customize<a class="headerlink" href="#how-to-customize" title="Link to this heading">#</a></h2>
 <p>If you want to try this straightforward usage for your data, you will probably need to cumstomize for your data. In such cases, see the <a class="reference external" href="https://freesemt.github.io/molass-technical/chapters/01/customization.html">Customization</a> chapter in the <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
-<hr class="footnotes docutils" />
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id2" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>For other tools, save the <code class="docutils literal notranslate"><span class="pre">jcurve_array</span></code> as a file with, for example, <code class="docutils literal notranslate"><span class="pre">np.savetxt(&quot;jcurve.dat&quot;,</span> <span class="pre">jcurve_array)</span></code>.</p>
-</aside>
-</aside>
 </section>
 </section>
 
@@ -657,7 +665,8 @@ switched to shrinkwrap by density threshold = 0.2000
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-refine">1.4. How to Refine</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-customize">1.5. How to Customize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-export">1.5. How to Export</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-customize">1.6. How to Customize</a></li>
 </ul>
   </nav></div>
 
