@@ -191,7 +191,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">6. Rank Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/denss.html">7. Electron Density Retrieval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/backward.html">8. Backward Compatibility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/non-apparent.html">9. Non-Apparent Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/nontrivial.html">9. Nontrivial Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/advanced-models.html">10. Advanced Elution Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../20/lro.html">11. Low Rank Optimization</a></li>
 </ul>
@@ -560,7 +560,7 @@ To take into account this regularity, we can specify the plate number as follow.
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The plate number is defined (or assumed) as follows.</p>
-<p><span class="math notranslate nohighlight">\( \frac{t_R^2}{\sigma^2} = N \qquad or \qquad \frac{t_R^2}{\sigma^2 + \tau^2} = N \)</span></p>
+<p><span class="math notranslate nohighlight">\( \frac{t_R^2}{\sigma^2} = N \qquad or \qquad \frac{t_R^2}{\sigma^2 + \tau^2 - \sigma|\tau|/5.577 } = N \)</span></p>
 <p>where</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(t_R\)</span> : retention time (measured from injection)</p></li>
