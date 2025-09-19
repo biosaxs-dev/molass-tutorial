@@ -493,7 +493,7 @@ developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&qu
 </section>
 <section id="running-denss">
 <h3><span class="section-number">1.3.3. </span>Running DENSS<a class="headerlink" href="#running-denss" title="Link to this heading">#</a></h3>
-<p>From the result of LRF, which is expressed as “lrf_info” here in the python code, we can obtain scattering curves of each component.
+<p>From the result of LRF, which is expressed as “decomposition” here in the python code, we can obtain scattering curves of each component.
 Once you have a well-conditioned scattering curve, you can reconstruct the original electron density distribution using an appropriate SAXS tool.
 In Molass Library, you can use <a class="reference external" href="https://tdgrant.com/">DENSS</a> directly as follows.</p>
 <div class="cell docutils container">
@@ -516,10 +516,10 @@ Number of calculated Shannon channels: 58
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   5.06e-02  85.62        1669519            
+  620   4.67e-02  81.98        1669519            
 switched to shrinkwrap by density threshold = 0.2000
-  999   2.13e-03  53.10        417379          EC: 2 -&gt; 1 
- 2981   4.13e-06  36.17        324228          
+  999   3.95e-05  36.06        365395          EC: 1 -&gt; 1 
+ 2463   1.81e-05  36.40        320321          
 </pre></div>
 </div>
 </div>
@@ -539,7 +539,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6f0dc7750696980265fe74de054b5ff683a190e392c4d4e65d48924c2a9729b2.png" src="../../_images/6f0dc7750696980265fe74de054b5ff683a190e392c4d4e65d48924c2a9729b2.png" />
+<img alt="../../_images/dff8fc7dea1a6b90aee8b9f601aa9c4afc9e1ba9cd813676aefde6f8a506e593.png" src="../../_images/dff8fc7dea1a6b90aee8b9f601aa9c4afc9e1ba9cd813676aefde6f8a506e593.png" />
 </div>
 </div>
 </section>
@@ -573,7 +573,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </section>
 <section id="how-to-export">
 <h2><span class="section-number">1.5. </span>How to Export<a class="headerlink" href="#how-to-export" title="Link to this heading">#</a></h2>
-<p>As we have passed the decomposed data to DENSS above, <code class="docutils literal notranslate"><span class="pre">jcurve_array</span></code> is the commonly used style which consists of the three column vectors, namely, [qvector, intensities, errors]. Do as follows, for example, to export the all decomposed scattering curves.</p>
+<p>As we have passed the decomposed data to DENSS above, <code class="docutils literal notranslate"><span class="pre">jcurve_array</span></code> is the commonly used portable style which consists of the three column vectors, namely, [qvector, intensities, errors]. Do as follows, for example, to export the all decomposed scattering curves.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
