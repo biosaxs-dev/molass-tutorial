@@ -474,7 +474,7 @@ document.write(`
 </section>
 <section id="elution-curves">
 <h2><span class="section-number">2.3. </span>Elution Curves<a class="headerlink" href="#elution-curves" title="Link to this heading">#</a></h2>
-<p>An <strong>elution curve</strong> shows how the signal (such as absorbance or scattering intensity) changes as a function of elution time or eluted volume during a chromatography experiment. In SEC-SAXS, both UV absorbance and X-ray intensity elution curves are observed.</p>
+<p>An <strong>elution curve</strong> shows how the signal (such as absorbance or scattering intensity) changes as a function of elution time or eluted volume during a chromatography experiment. In SEC-SAXS, both UV absorbance and X-ray scattering elution curves are observed.</p>
 <p>Let’s extract and plot the elution curves for both X-ray scattering and UV absorbance.</p>
 <p>For X-ray data, elution curves are picked, by default, at Q=0.02 [Å⁻¹].</p>
 <div class="cell docutils container">
@@ -527,7 +527,7 @@ document.write(`
 </section>
 <section id="peak-positions">
 <h2><span class="section-number">2.4. </span>Peak Positions<a class="headerlink" href="#peak-positions" title="Link to this heading">#</a></h2>
-<p>To analyze the data further, let’s find the peak positions in both elution curves. We use <strong>integer array indexing</strong> for NumPy arrays to highlight the peaks.</p>
+<p>To analyze the data further, let’s find the peak positions in both elution curves. <strong>Integer array indexing</strong> is used here for NumPy arrays to highlight the peaks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uv_peaks</span> <span class="o">=</span> <span class="n">uv_icurve</span><span class="o">.</span><span class="n">get_peaks</span><span class="p">()</span>
