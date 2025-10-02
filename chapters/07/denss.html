@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -433,13 +433,8 @@ Our final analysis step is to solve the inverse problem of determining the parti
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x2241ccd0800&gt;
-</pre></div>
-</div>
-<img alt="../../_images/e480d8302ff64ae93bf2fd44929e8add130f1766b54dd11d705764cc977ed705.png" src="../../_images/e480d8302ff64ae93bf2fd44929e8add130f1766b54dd11d705764cc977ed705.png" />
 </div>
 </div>
 <p>Then, selecting one of the components, run DENSS as follows.</p>
@@ -450,23 +445,6 @@ developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&qu
 <span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
 <span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span>
 <span class="n">run_denss</span><span class="p">(</span><span class="n">jcurve_array</span><span class="p">,</span> <span class="n">output_folder</span><span class="o">=</span><span class="n">output_folder</span><span class="p">)</span>    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
-WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
-Dmax = 141.81
-Number of experimental Shannon channels: 19
-Number of calculated Shannon channels: 57
-
-
- Step     Chi2     Rg    Support Volume
- ----- --------- ------- --------------
-  620   7.70e-02 85.31        1631949            
-switched to shrinkwrap by density threshold = 0.2000
-  999   7.92e-04 46.84        391244          EC: 2 -&gt; 1 
- 2926   3.45e-05 36.67        325743          
 </pre></div>
 </div>
 </div>
@@ -484,9 +462,6 @@ switched to shrinkwrap by density threshold = 0.2000
 <span class="n">show_mrc</span><span class="p">(</span><span class="n">output_folder</span> <span class="o">+</span> <span class="s1">&#39;/denss_result.mrc&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/bb91f8f870d981fd23bc8c48549e8623a3cc7706c54951d020dde4b9bfbcb87c.png" src="../../_images/bb91f8f870d981fd23bc8c48549e8623a3cc7706c54951d020dde4b9bfbcb87c.png" />
 </div>
 </div>
 </section>
