@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -440,7 +440,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.2.0 or higher.&quot;</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.0 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
@@ -468,9 +468,6 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
 <img alt="../../_images/586e24a0db23953c2b511304f87db97861136e593ed10f1548899d9cbe76b345.png" src="../../_images/586e24a0db23953c2b511304f87db97861136e593ed10f1548899d9cbe76b345.png" />
 </div>
 </div>
@@ -486,9 +483,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
 <img alt="../../_images/1f2603845b3a6bca38ef426905ec961bf3b49418e3b14414e093661bb6ec8f8d.png" src="../../_images/1f2603845b3a6bca38ef426905ec961bf3b49418e3b14414e093661bb6ec8f8d.png" />
 </div>
 </div>
@@ -545,9 +539,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
 <img alt="../../_images/d9da79ab3a96726f55930e47ac526bdbe45b0b343066e2e94dfe9ce650fc213f.png" src="../../_images/d9da79ab3a96726f55930e47ac526bdbe45b0b343066e2e94dfe9ce650fc213f.png" />
 </div>
 </div>
@@ -578,9 +569,6 @@ To take into account this regularity, we can specify the plate number as follow.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
 <img alt="../../_images/c524523fc54763dac2938a85c1fcc24129c5b79f272380dec31f34cc55402cd5.png" src="../../_images/c524523fc54763dac2938a85c1fcc24129c5b79f272380dec31f34cc55402cd5.png" />
 </div>
 </div>
@@ -612,9 +600,6 @@ To take into account this regularity, we can specify the plate number as follow.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
 <img alt="../../_images/3735180a599b91b9cf3990e9277e45e44285d895339db7f6b1459df04764788a.png" src="../../_images/3735180a599b91b9cf3990e9277e45e44285d895339db7f6b1459df04764788a.png" />
 </div>
 </div>
@@ -631,9 +616,6 @@ To take into account this regularity, we can specify the plate number as follow.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
 <img alt="../../_images/a6237f59ea37f4cc831f73ced232887a8ab6dd9ed88956e386ceb76a09d9345a.png" src="../../_images/a6237f59ea37f4cc831f73ced232887a8ab6dd9ed88956e386ceb76a09d9345a.png" />
 </div>
 </div>
