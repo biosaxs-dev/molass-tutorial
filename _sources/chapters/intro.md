@@ -13,6 +13,6 @@ As you proceed, you may also find the following resources helpful:
 To join the community, see also:
 * [Molass Developer's Handbook](https://molass-saxs.github.io/molass-develop) for maintenance, for developers.
 
-## Acknowledgments
+## Acknowledgements
 
 Parts of this tutorial were created with the assistance of [GitHub Copilot](https://github.com/features/copilot).
