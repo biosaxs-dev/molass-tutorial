@@ -5,13 +5,13 @@ Molass Library is a rewrite of [MOLASS](https://pfwww.kek.jp/saxs/MOLASSE.html),
 This tutorial will help you get started with the Molass Library. You can follow the chapters in order, or use the search box to find topics of interest.
 
 As you proceed, you may also find the following resources helpful:
-* [Molass Library Essence](https://molass-saxs.github.io/molass-essence/) on theory, for researchers
+* [Molass Library Essence](https://biosaxs-dev.github.io/molass-essence/) on theory, for researchers
 * [Molass Technical Report](https://freesemt.github.io/molass-technical/) on technical details, for advanced users
-* [Molass Library Reference](https://molass-saxs.github.io/molass-library/) on function reference, for coding
+* [Molass Library Reference](https://biosaxs-dev.github.io/molass-library/) on function reference, for coding
 * [Molass Library Repository](https://github.com/molass-saxs/molass-library) on source code, for implementation
 
 To join the community, see also:
-* [Molass Developer's Handbook](https://molass-saxs.github.io/molass-develop) for maintenance, for developers.
+* [Molass Developer's Handbook](https://biosaxs-dev.github.io/molass-develop) for maintenance, for developers.
 
 ## Acknowledgements
 
