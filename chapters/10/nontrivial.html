@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -409,12 +409,12 @@ document.write(`
 <p>Let us first observe such an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.0 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.3.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass_data version 0.3.0 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE4</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE4</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE4</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
@@ -423,7 +423,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ef5f3e2c9b0587d57a56cef0aea5de0489c965c6ea4af43d5a31ca356dcd4454.png" src="../../_images/ef5f3e2c9b0587d57a56cef0aea5de0489c965c6ea4af43d5a31ca356dcd4454.png" />
+<img alt="../../_images/bc62e121cb73cd17e9dbc46eb79e62c3cef80f9551b045bc786001cdff09432d.png" src="../../_images/bc62e121cb73cd17e9dbc46eb79e62c3cef80f9551b045bc786001cdff09432d.png" />
 </div>
 </div>
 <p>At first glance, the peak may seem to consist of a single component. For a more detailed observation, let us assume it may consist of two components and add the Rg curve.</p>
@@ -436,13 +436,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 203/203 [00:07&lt;00:00, 25.46it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 203/203 [00:17&lt;00:00, 11.68it/s]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x24a368a6f60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x293db82e210&gt;
 </pre></div>
 </div>
-<img alt="../../_images/3e368c4047c9e0551376a46697356691437d598c4ad317f9678f2370898fac01.png" src="../../_images/3e368c4047c9e0551376a46697356691437d598c4ad317f9678f2370898fac01.png" />
+<img alt="../../_images/d2f6929f91855021c130be6bec3d360ad38feb765a30fc795a86ce57635dce4f.png" src="../../_images/d2f6929f91855021c130be6bec3d360ad38feb765a30fc795a86ce57635dce4f.png" />
 </div>
 </div>
 </section>
@@ -451,7 +451,7 @@ document.write(`
 <p>If you are not sure about the default compositiun, you can compare the results with different proportions as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">num_trails</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">species1_proportions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_trails</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
 <span class="n">species2_proportions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">num_trails</span><span class="p">)</span>
@@ -480,8 +480,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6d434ed0fb42766889ca639f94db88dd4a9c55f17ce2854c6839ce22256914c0.png" src="../../_images/6d434ed0fb42766889ca639f94db88dd4a9c55f17ce2854c6839ce22256914c0.png" />
-<img alt="../../_images/411b7384e2366bf28ef0ba50a128f248aeaa180d5956936b54db33936b54b2ca.png" src="../../_images/411b7384e2366bf28ef0ba50a128f248aeaa180d5956936b54db33936b54b2ca.png" />
+<img alt="../../_images/61b64e36c86c966a83bb127804c68ee87eb9afcf38a20d8884f7eb7d11fae6e3.png" src="../../_images/61b64e36c86c966a83bb127804c68ee87eb9afcf38a20d8884f7eb7d11fae6e3.png" />
+<img alt="../../_images/6979c31a8b7939d74f47c022698661d3fda48f1554b12c294dd5b1d9bba166d0.png" src="../../_images/6979c31a8b7939d74f47c022698661d3fda48f1554b12c294dd5b1d9bba166d0.png" />
 </div>
 </div>
 </section>
@@ -516,8 +516,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a1dcae8ffc0d493369473ecb593bfb440fe9c5012cd0066c9e734523a554c909.png" src="../../_images/a1dcae8ffc0d493369473ecb593bfb440fe9c5012cd0066c9e734523a554c909.png" />
-<img alt="../../_images/943306f1f04c30840757f511fe2c51dcb185cfd110ec429998b02803529141a6.png" src="../../_images/943306f1f04c30840757f511fe2c51dcb185cfd110ec429998b02803529141a6.png" />
+<img alt="../../_images/ab6fe8532d80e2d4f5504673fe250043a29f60db7a798cceb57cf0f8a839e0be.png" src="../../_images/ab6fe8532d80e2d4f5504673fe250043a29f60db7a798cceb57cf0f8a839e0be.png" />
+<img alt="../../_images/005973c68a8c8bae905372a3a26a9551b4b299a6c1288b3201fd46d526c8aee8.png" src="../../_images/005973c68a8c8bae905372a3a26a9551b4b299a6c1288b3201fd46d526c8aee8.png" />
 </div>
 </div>
 </section>

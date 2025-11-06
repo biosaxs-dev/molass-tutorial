@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -419,10 +419,10 @@ Our final analysis step is to solve the inverse problem of determining the parti
 <p>First, get a better scattering curve by decomposition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.3&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.3 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE1</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
@@ -435,16 +435,16 @@ Our final analysis step is to solve the inverse problem of determining the parti
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x287a8f58230&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x2667abdea50&gt;
 </pre></div>
 </div>
-<img alt="../../_images/2d52e41912f625b93ace3b45e1ca49728c0c23fd09c1070f0b285e2f1850ae81.png" src="../../_images/2d52e41912f625b93ace3b45e1ca49728c0c23fd09c1070f0b285e2f1850ae81.png" />
+<img alt="../../_images/491ff5396f4f26955bb146a05df1776a2256d090cbd411dff33e9ae15df7b978.png" src="../../_images/491ff5396f4f26955bb146a05df1776a2256d090cbd411dff33e9ae15df7b978.png" />
 </div>
 </div>
 <p>Then, selecting one of the components, run DENSS as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">run_denss</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass.SAXS.DenssTools</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_denss</span>
 <span class="c1"># Get, for example, the first component&#39;s scattering curve as an array</span>
 <span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
 <span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span>
@@ -459,10 +459,10 @@ WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   2.86e-02 75.60        1631949            
+  620   3.64e-02 78.02        1631949            
 switched to shrinkwrap by density threshold = 0.2000
-  999   4.55e-05 36.67        435303          EC: 1 -&gt; 1 
- 1662   3.61e-05 36.60        367159          
+  999   1.74e-05 36.50        422673          EC: 1 -&gt; 1 
+ 2248   2.17e-05 36.51        375677          
 </pre></div>
 </div>
 </div>
@@ -473,8 +473,8 @@ switched to shrinkwrap by density threshold = 0.2000
 <p>The result can be visualized as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">molass.SAXS.MrcViewer</span> <span class="kn">import</span> <span class="n">show_mrc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.SAXS.MrcViewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_mrc</span>
 <span class="c1"># %matplotlib widget</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">show_mrc</span><span class="p">(</span><span class="n">output_folder</span> <span class="o">+</span> <span class="s1">&#39;/denss_result.mrc&#39;</span><span class="p">);</span>
@@ -482,7 +482,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f082a0622f7643324346581c29fe31da1eec74abf84488a712766667c461f353.png" src="../../_images/f082a0622f7643324346581c29fe31da1eec74abf84488a712766667c461f353.png" />
+<img alt="../../_images/d3bcdd2f33154ef2e11dbcfc66d2dd5b40e20379e42eff27e6abd6457cdb1f9f.png" src="../../_images/d3bcdd2f33154ef2e11dbcfc66d2dd5b40e20379e42eff27e6abd6457cdb1f9f.png" />
 </div>
 </div>
 </section>

@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -447,10 +447,10 @@ document.write(`
 <p>By observig the elution curves, humans can guess the number of components. For example as in the case of SAMPLE1 data, like decomposing into three seems better than two due to the bump in the right side of the first visible peak. See the difference in the following ddecompositons: the first one with two components (from default rough recongnition) and the second one with explictily specified three components.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.2.0 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE1</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
@@ -463,7 +463,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<img alt="../../_images/ebe2848ba092a9a5da143d2eab9fe56170efc039e82da989ed9b332b3b1f8fee.png" src="../../_images/ebe2848ba092a9a5da143d2eab9fe56170efc039e82da989ed9b332b3b1f8fee.png" />
+<img alt="../../_images/c1a19c853f9cbd095bc480215f346a622139902b804a288738f4a4469949cbf3.png" src="../../_images/c1a19c853f9cbd095bc480215f346a622139902b804a288738f4a4469949cbf3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -474,7 +474,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2d52e41912f625b93ace3b45e1ca49728c0c23fd09c1070f0b285e2f1850ae81.png" src="../../_images/2d52e41912f625b93ace3b45e1ca49728c0c23fd09c1070f0b285e2f1850ae81.png" />
+<img alt="../../_images/491ff5396f4f26955bb146a05df1776a2256d090cbd411dff33e9ae15df7b978.png" src="../../_images/491ff5396f4f26955bb146a05df1776a2256d090cbd411dff33e9ae15df7b978.png" />
 </div>
 </div>
 </section>
@@ -488,7 +488,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/aabbce0381679665841f962d8a785ea51226f9b43138ff07a6ec888e2a31f624.png" src="../../_images/aabbce0381679665841f962d8a785ea51226f9b43138ff07a6ec888e2a31f624.png" />
+<img alt="../../_images/8a1bf5dbc7bbfe7a393b390b3a70a5a2bc3d255586f55aa60a7cf2b8def3675c.png" src="../../_images/8a1bf5dbc7bbfe7a393b390b3a70a5a2bc3d255586f55aa60a7cf2b8def3675c.png" />
 </div>
 </div>
 </section>
@@ -528,14 +528,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.5141964291028607, 4.1353581642850905, 0.6386070838487024]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[np.float64(0.5141964291028607),
+ np.float64(4.1353581642850905),
+ np.float64(0.6386070838487024)]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Backward.RankEstimator</span> <span class="kn">import</span> <span class="n">scd_to_rank</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass.Backward.RankEstimator</span><span class="w"> </span><span class="kn">import</span> <span class="n">scd_to_rank</span>
 <span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="n">scd_to_rank</span><span class="p">(</span><span class="n">scd</span><span class="p">)</span> <span class="k">for</span> <span class="n">scd</span> <span class="ow">in</span> <span class="n">scds</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">scd</span><span class="p">,</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scds</span><span class="p">,</span> <span class="n">ranks</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCD: </span><span class="si">{</span><span class="n">scd</span><span class="si">}</span><span class="s2">, Rank: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -555,7 +557,7 @@ SCD: 0.6386070838487024, Rank: 1
 <h3><span class="section-number">6.4.3. </span>SAMPLE3 - Case of significant concentration dependence<a class="headerlink" href="#sample3-case-of-significant-concentration-dependence" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE3</span>
 <span class="n">ssd3</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE3</span><span class="p">)</span>
 <span class="n">decomposition3</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
 <span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
@@ -564,7 +566,7 @@ SCD: 0.6386070838487024, Rank: 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.136732388051838]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[np.float64(5.136732388051838)]
 </pre></div>
 </div>
 </div>

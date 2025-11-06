@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -428,18 +428,18 @@ document.write(`
 <p>The following code loads a data set from a SEC-SAXS experiment and displays a 3D plot of the dataset. This helps visualize the relationship between elution time, scattering angle, and intensity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.2.0 or higher.&quot;</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE1</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;3D Plot of Sample1&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/42985012ff4b648fec8d0d747fc88fe5791153cca30c22e9005e56cf45b9f6bf.png" src="../../_images/42985012ff4b648fec8d0d747fc88fe5791153cca30c22e9005e56cf45b9f6bf.png" />
+<img alt="../../_images/c5d5137f2ac6319b02227372ad5fe70aef22ff55db29513fb315cb7ecc528b14.png" src="../../_images/c5d5137f2ac6319b02227372ad5fe70aef22ff55db29513fb315cb7ecc528b14.png" />
 </div>
 </div>
 <p>In the 3D plot, you understand the whole structure of the data set and how it changes over time. Note that <code class="docutils literal notranslate"><span class="pre">SAMPLE1</span></code> variable has the folder path where the tutorial data set is located.</p>
@@ -454,7 +454,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<img alt="../../_images/961b76572c20b80830e178da14e7fcbad98c92db7ffba87ffb24d7658cc1fece.png" src="../../_images/961b76572c20b80830e178da14e7fcbad98c92db7ffba87ffb24d7658cc1fece.png" />
+<img alt="../../_images/ad4a2666fae09199edef22005c0058b6e166ad097e199ae5f68da1038fc95287.png" src="../../_images/ad4a2666fae09199edef22005c0058b6e166ad097e199ae5f68da1038fc95287.png" />
 </div>
 </div>
 <p>Note that the yellow vertical lines indicate the positions where other 2D plots have picked the data to draw.</p>
@@ -467,7 +467,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fe9fbfca2e8dbb3012796b61001e315d5413b93804a3b356cfad9a4f9f3b74c1.png" src="../../_images/fe9fbfca2e8dbb3012796b61001e315d5413b93804a3b356cfad9a4f9f3b74c1.png" />
+<img alt="../../_images/240e7f97f5247509414297b44edb430323386ad30ae5a1b75992954657b912b6.png" src="../../_images/240e7f97f5247509414297b44edb430323386ad30ae5a1b75992954657b912b6.png" />
 </div>
 </div>
 <p>To summarize, SSD (SEC-SAXS Data Set) objects provide basic utilities to grasp the data set as a whole and serve as the starting point of your analysis, from where you can derive subsequent objects required for further analysis. We will explore some of such derivations and basic matplotlib usages for them in the following sections.</p>
@@ -489,7 +489,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/98d073d316d9481420f42d896d77239a880f9489622925ffd2cfeb1dc6a70e6f.png" src="../../_images/98d073d316d9481420f42d896d77239a880f9489622925ffd2cfeb1dc6a70e6f.png" />
+<img alt="../../_images/2ea17f411c252be785a2685aa9c99db1533f5889d19ed9d301d2069552eedbcf.png" src="../../_images/2ea17f411c252be785a2685aa9c99db1533f5889d19ed9d301d2069552eedbcf.png" />
 </div>
 </div>
 <p>For UV data, elution curves are picked, by default, at wavelength=280 [nm].</p>
@@ -505,7 +505,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c3bb64693f885a3267fef086a14837c19a85f0da9661a2e559818ba159d7b7cd.png" src="../../_images/c3bb64693f885a3267fef086a14837c19a85f0da9661a2e559818ba159d7b7cd.png" />
+<img alt="../../_images/f74de454c8f137f1c2af6995a2b345688fe63297766206342f245c6d3e4a9adf.png" src="../../_images/f74de454c8f137f1c2af6995a2b345688fe63297766206342f245c6d3e4a9adf.png" />
 </div>
 </div>
 <p>Another plot example with two subplots: one for the X-ray scattering elution curve and one for the UV absorbance elution curve.</p>
@@ -521,7 +521,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a3990612c663bfb6f7b117329436846e30658ae67a20bc6908fab0d11f251993.png" src="../../_images/a3990612c663bfb6f7b117329436846e30658ae67a20bc6908fab0d11f251993.png" />
+<img alt="../../_images/89c040becc45cafcf78ef9644f97a58997287fcc05f67c219ae48f52fb38526d.png" src="../../_images/89c040becc45cafcf78ef9644f97a58997287fcc05f67c219ae48f52fb38526d.png" />
 </div>
 </div>
 </section>
@@ -537,7 +537,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([131, 231], [88, 157])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([np.int64(131), np.int64(231)], [np.int64(88), np.int64(157)])
 </pre></div>
 </div>
 </div>
@@ -557,7 +557,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cf7b01855ff386a37f7d8032d6ff23e6bfd8defcfee5a3ee6dea9b3af37683bf.png" src="../../_images/cf7b01855ff386a37f7d8032d6ff23e6bfd8defcfee5a3ee6dea9b3af37683bf.png" />
+<img alt="../../_images/a1a422ff13cb2de489ed24931433f89c54d048185ad450ab7883057d3c0c3c96.png" src="../../_images/a1a422ff13cb2de489ed24931433f89c54d048185ad450ab7883057d3c0c3c96.png" />
 </div>
 </div>
 <p>The circles on the plots indicate the detected peak positions.</p>
@@ -587,7 +587,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fe35e0600083e5f159299cb662ff87c7bd861a6918f90430d45104c1f12e6ad3.png" src="../../_images/fe35e0600083e5f159299cb662ff87c7bd861a6918f90430d45104c1f12e6ad3.png" />
+<img alt="../../_images/223c1f766b30798cce3317a965eb4fa407af3de49d0604a0639775adb262d5ca.png" src="../../_images/223c1f766b30798cce3317a965eb4fa407af3de49d0604a0639775adb262d5ca.png" />
 </div>
 </div>
 </section>
@@ -607,7 +607,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/27943c3efe2b16e941ce6898de4bd33a6b3755c960b3e442fee541f294eea859.png" src="../../_images/27943c3efe2b16e941ce6898de4bd33a6b3755c960b3e442fee541f294eea859.png" />
+<img alt="../../_images/c5515f8e83f30a61297e62430050205afd2f06392650b4e222fca0571d71df01.png" src="../../_images/c5515f8e83f30a61297e62430050205afd2f06392650b4e222fca0571d71df01.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -630,7 +630,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a92cf32a99c5742a1003ae994b6417a9ea744d6fa1073df707c2ab17b0216501.png" src="../../_images/a92cf32a99c5742a1003ae994b6417a9ea744d6fa1073df707c2ab17b0216501.png" />
+<img alt="../../_images/262c560de98f0b64f5473e63bccbe4c6925cf334d68eb0f2916f8e551ece22b9.png" src="../../_images/262c560de98f0b64f5473e63bccbe4c6925cf334d68eb0f2916f8e551ece22b9.png" />
 </div>
 </div>
 </section>

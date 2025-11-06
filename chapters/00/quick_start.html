@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -454,17 +454,17 @@ However, life is not so easy and that is why the hard part exists, which we will
 <p>We can plot the data set as follows. The format of this data set is specified in the chapter 4 of <a class="reference external" href="https://pfwww.kek.jp/saxs/software/MOLASS-UsersGuide-1_0_13.pdf">MOLASS User’s Guide</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.1&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.1 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE1</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;3D Plot of Sample1&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/42985012ff4b648fec8d0d747fc88fe5791153cca30c22e9005e56cf45b9f6bf.png" src="../../_images/42985012ff4b648fec8d0d747fc88fe5791153cca30c22e9005e56cf45b9f6bf.png" />
+<img alt="../../_images/c5d5137f2ac6319b02227372ad5fe70aef22ff55db29513fb315cb7ecc528b14.png" src="../../_images/c5d5137f2ac6319b02227372ad5fe70aef22ff55db29513fb315cb7ecc528b14.png" />
 </div>
 </div>
 </section>
@@ -486,7 +486,7 @@ We can execute these steps and show the results as follows. The details of each 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<img alt="../../_images/82d4a84bd2e4ae45881bc1b4f0605cb0138b65aeb307f126a657565a6b140968.png" src="../../_images/82d4a84bd2e4ae45881bc1b4f0605cb0138b65aeb307f126a657565a6b140968.png" />
+<img alt="../../_images/05dafe3388078761254791606a555fd761466c81ed405e373119e19d4b06fc0a.png" src="../../_images/05dafe3388078761254791606a555fd761466c81ed405e373119e19d4b06fc0a.png" />
 </div>
 </div>
 </section>
@@ -497,7 +497,7 @@ Once you have a well-conditioned scattering curve, you can reconstruct the origi
 In Molass Library, you can use <a class="reference external" href="https://tdgrant.com/">DENSS</a> directly as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">run_denss</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass.SAXS.DenssTools</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_denss</span>
 <span class="c1"># Get, for example, the first component&#39;s scattering curve as an array</span>
 <span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
 <span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span>
@@ -512,10 +512,10 @@ WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   8.28e-02 92.79        1669519            
+  620   6.49e-02 88.05        1669519            
 switched to shrinkwrap by density threshold = 0.2000
-  999   1.23e-02 70.27        585654          EC: 3 -&gt; 1 
- 2648   6.63e-05 36.76        362690          
+  999   6.59e-05 36.72        380720          EC: 1 -&gt; 1 
+ 1811   1.17e-04 36.82        322124          
 </pre></div>
 </div>
 </div>
@@ -526,8 +526,8 @@ switched to shrinkwrap by density threshold = 0.2000
 <p>The DENSS result can be visualized as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">molass.SAXS.MrcViewer</span> <span class="kn">import</span> <span class="n">show_mrc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.SAXS.MrcViewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_mrc</span>
 <span class="c1"># Uncomment the following magic command line if you want to use an interactive plot in Jupyter Notebook</span>
 <span class="c1"># %matplotlib widget</span>
 <span class="n">show_mrc</span><span class="p">(</span><span class="n">output_folder</span> <span class="o">+</span> <span class="s1">&#39;/denss_result.mrc&#39;</span><span class="p">);</span>
@@ -535,7 +535,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c37ec20d5fbbb2a9d70ee96ec0641cdf36097e3acec3783af8a29a10e261ffdf.png" src="../../_images/c37ec20d5fbbb2a9d70ee96ec0641cdf36097e3acec3783af8a29a10e261ffdf.png" />
+<img alt="../../_images/c14efaec7a8d510509edb646cea073ed8f22eb46dd639601c6917a074cd7688f.png" src="../../_images/c14efaec7a8d510509edb646cea073ed8f22eb46dd639601c6917a074cd7688f.png" />
 </div>
 </div>
 </section>
@@ -559,7 +559,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5e6366b4b791f7d7a1f69fcdc85ae1a56b7768c131dcafcd92d05619d22505c2.png" src="../../_images/5e6366b4b791f7d7a1f69fcdc85ae1a56b7768c131dcafcd92d05619d22505c2.png" />
+<img alt="../../_images/a31af6f19666535b6688f524fe84a9eb88518b00837b6589131491d38cfefe95.png" src="../../_images/a31af6f19666535b6688f524fe84a9eb88518b00837b6589131491d38cfefe95.png" />
 </div>
 </div>
 <p>Molass Library provides several other options and methods for better estimation of scattering curves which we will discuss one by one in later chapters.</p>
@@ -569,7 +569,7 @@ switched to shrinkwrap by density threshold = 0.2000
 <p>As we have passed the decomposed data to DENSS above, <code class="docutils literal notranslate"><span class="pre">jcurve_array</span></code> is the commonly used portable style which consists of the three column vectors, namely, [qvector, intensities, errors]. Do as follows, for example, to export the all decomposed scattering curves.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">simply_refined_decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()):</span>
     <span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">comp</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
     <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;component_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">.dat&quot;</span><span class="p">,</span> <span class="n">jcurve_array</span><span class="p">)</span>

@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -430,10 +430,10 @@ document.write(`
 <p>By default, linear baseline is assumed. Before correction, you can confirm how it is determined with basseline option as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.2.0 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
@@ -441,7 +441,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/221abe0410be31ea142b995c37a00ef1fcad1e6c912df693a8d341fcf93fb883.png" src="../../_images/221abe0410be31ea142b995c37a00ef1fcad1e6c912df693a8d341fcf93fb883.png" />
+<img alt="../../_images/3c7829fead74d0fe9200562a0a5695404310db10f75b21ab598b359d3f3ef817.png" src="../../_images/3c7829fead74d0fe9200562a0a5695404310db10f75b21ab598b359d3f3ef817.png" />
 </div>
 </div>
 <p>Note that just plotting does not change the data set. Actual correction is performed by making a corrected copy of the object with the <code class="docutils literal notranslate"><span class="pre">corrected_copy</span></code> as shown below.</p>
@@ -453,7 +453,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d425148c49f640cd8f558be80cd915c24542809a2e42b979f614af2c0795c1be.png" src="../../_images/d425148c49f640cd8f558be80cd915c24542809a2e42b979f614af2c0795c1be.png" />
+<img alt="../../_images/c478c45c233d9b43d4a1ee907ee7ba44bb67154da60ce11f0029461f3bebf32e.png" src="../../_images/c478c45c233d9b43d4a1ee907ee7ba44bb67154da60ce11f0029461f3bebf32e.png" />
 </div>
 </div>
 <p>To change the correction method, you can use <code class="docutils literal notranslate"><span class="pre">set_baseline_method</span></code> with one of the following specifications.</p>
@@ -475,7 +475,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/52638847f3403867c7518eb291225f26c78fc8bf802e43e881564e0c9cee2ed7.png" src="../../_images/52638847f3403867c7518eb291225f26c78fc8bf802e43e881564e0c9cee2ed7.png" />
+<img alt="../../_images/9721e4b5a9a3c99a966dbf453fc403c981050a9d885268192f122512bcc692c3.png" src="../../_images/9721e4b5a9a3c99a966dbf453fc403c981050a9d885268192f122512bcc692c3.png" />
 </div>
 </div>
 <p>This baseline method setting is retained with copies so that the following standard coding sequence works as expected.</p>
@@ -487,7 +487,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0de4b3b656a8f8ed5352c6e2761fa757350646620548b39ddbedf1178acfdc0a.png" src="../../_images/0de4b3b656a8f8ed5352c6e2761fa757350646620548b39ddbedf1178acfdc0a.png" />
+<img alt="../../_images/f9fc472a9868d0a120a16e3b798817a4669ca9a518dda1545145c0abfc551d9f.png" src="../../_images/f9fc472a9868d0a120a16e3b798817a4669ca9a518dda1545145c0abfc551d9f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -515,7 +515,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/119065fdef93fdcd3a4b700a2d2e16eefbf5c20f3ffa1f42cefe9e7e42df620c.png" src="../../_images/119065fdef93fdcd3a4b700a2d2e16eefbf5c20f3ffa1f42cefe9e7e42df620c.png" />
+<img alt="../../_images/8382b48173284b03ff08bb60eb7ad32634f012504d9adfc9d49a6d4606ff54a9.png" src="../../_images/8382b48173284b03ff08bb60eb7ad32634f012504d9adfc9d49a6d4606ff54a9.png" />
 </div>
 </div>
 <p>The actual stardard correction procedure will be as follows.</p>
@@ -527,7 +527,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a727ae57336154c16cf4d6bb7bc3e455bb27af6d321bb6748193f97c85d4662b.png" src="../../_images/a727ae57336154c16cf4d6bb7bc3e455bb27af6d321bb6748193f97c85d4662b.png" />
+<img alt="../../_images/5baf59c7478354a792caf95cd849aecb1973607eff2b367b1aaef3b649197507.png" src="../../_images/5baf59c7478354a792caf95cd849aecb1973607eff2b367b1aaef3b649197507.png" />
 </div>
 </div>
 <p>Note that the last specified (with ssd2) and retained (in trimmed_ssd2) method has been valid, which can be shown as follows (not default ‘linear’ in this case).</p>

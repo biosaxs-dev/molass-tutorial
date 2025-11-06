@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -410,10 +410,10 @@ To cope with this issue, advanced models are introduced.</p>
 <p>As an example, let us examine the best result using the default EGH model from the previous chapter. Note that the proportins [3, 1.86, 1] used below attained the minimum objective function value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.6.0 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE4</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE4</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE4</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
@@ -423,7 +423,7 @@ To cope with this issue, advanced models are introduced.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/166ad6d6d514593abdd22be840b03ab56374ffc4497cbbef6aa8993252f4834f.png" src="../../_images/166ad6d6d514593abdd22be840b03ab56374ffc4497cbbef6aa8993252f4834f.png" />
+<img alt="../../_images/0bc828db0584836db960dbba22c5af52a3b2ba292b556c33d36683640e1a9244.png" src="../../_images/0bc828db0584836db960dbba22c5af52a3b2ba292b556c33d36683640e1a9244.png" />
 </div>
 </div>
 </section>
@@ -438,7 +438,7 @@ To cope with this issue, advanced models are introduced.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7415ae6810baf22f08746d7e3a29acd80680b562c0e7ce8b58482d0b333c4858.png" src="../../_images/7415ae6810baf22f08746d7e3a29acd80680b562c0e7ce8b58482d0b333c4858.png" />
+<img alt="../../_images/544b092c371bd4874e1b7ae73b21130a23e21a1378826625d2d4d76e55e5dd3a.png" src="../../_images/544b092c371bd4874e1b7ae73b21130a23e21a1378826625d2d4d76e55e5dd3a.png" />
 </div>
 </div>
 </section>
@@ -459,11 +459,11 @@ guess_init_params: M2= 134.61576060205115
 area ratio= 0.35559694660498437
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python312\Lib\site-packages\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python313\Lib\site-packages\molass_legacy\SecTheory\Edm.py:134: RuntimeWarning: invalid value encountered in sqrt
   W = np.sqrt(np.pi*tau/RPe)
-C:\Program Files\Python312\Lib\site-packages\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
+C:\Program Files\Python313\Lib\site-packages\molass_legacy\SecTheory\Edm.py:135: RuntimeWarning: invalid value encountered in sqrt
   Y = xi/(2*np.sqrt(tau/RPe))
-C:\Program Files\Python312\Lib\site-packages\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
+C:\Program Files\Python313\Lib\site-packages\molass_legacy\SecTheory\Edm.py:140: RuntimeWarning: overflow encountered in exp
   numer = U*(expB - 1)*np.exp(-V)
 </pre></div>
 </div>
@@ -471,7 +471,7 @@ C:\Program Files\Python312\Lib\site-packages\molass_legacy\SecTheory\Edm.py:140:
 area ratio= 0.3521629344551637
 </pre></div>
 </div>
-<img alt="../../_images/106efb698a9d9e57a6bb6cf3327a890b0982ea78d2f6c375e30d1355dc779555.png" src="../../_images/106efb698a9d9e57a6bb6cf3327a890b0982ea78d2f6c375e30d1355dc779555.png" />
+<img alt="../../_images/2afef97505927e2e038037ddb5542fab5e110cc326a5b917e4b90e5db89cd287.png" src="../../_images/2afef97505927e2e038037ddb5542fab5e110cc326a5b917e4b90e5db89cd287.png" />
 </div>
 </div>
 </section>
