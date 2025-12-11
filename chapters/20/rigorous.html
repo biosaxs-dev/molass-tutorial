@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -446,7 +446,7 @@ For other advanced models, use the EGH decomposition to get respective model par
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 203/203 [00:17&lt;00:00, 11.79it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 203/203 [00:17&lt;00:00, 11.91it/s]
 </pre></div>
 </div>
 <img alt="../../_images/b01ceeecec21ad0d4edf84cabde4dbf4c92a2b8ce45fbfc19737fcbac2f9ca59.png" src="../../_images/b01ceeecec21ad0d4edf84cabde4dbf4c92a2b8ce45fbfc19737fcbac2f9ca59.png" />
@@ -467,6 +467,8 @@ len(x), len(y), len(sy): 441 441 441
 len(x), len(y), len(sy): 203 203 203
 len(x), len(y), len(sy): 441 441 441
 len(x), len(y), len(sy): 203 203 203
+do_mapping result ------------------ correlation= 0.9991817422653649
+make_it_compatible_from_sliced result ------------------ correlation= 0.9991817422653649
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python313\Lib\site-packages\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
@@ -496,9 +498,7 @@ fit_sigmoid error:   File &quot;c:\Program Files\Python313\Lib\site-packages\mol
 AssertionError
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>do_mapping result ------------------ correlation= 0.9991817422653649
-make_it_compatible_from_sliced result ------------------ correlation= 0.9991817422653649
-ptx_ratio= 0.3276737562966875
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ptx_ratio= 0.3276737562966875
 excess_width_ratio=0
 symmetry_deviation=1
 remaining_ratio= 0.004834884333595769
@@ -540,7 +540,7 @@ opt_ret.fun= 8.680578885438453e-05
 ----------------- guess_initial_secparams: poresize= 70
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7a1a529b6e114f1798453541f2987b1d", "version_major": 2, "version_minor": 0}</script><div class="output text_html">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6cbc6067f6af4dca9f39b664a5978389", "version_major": 2, "version_minor": 0}</script><div class="output text_html">
     <style>
     .status-label-green {
         color: green !important;
@@ -567,7 +567,7 @@ opt_ret.fun= 8.680578885438453e-05
         font-weight: bold;
     }
     </style>
-    </div><script type="application/vnd.jupyter.widget-view+json">{"model_id": "791b3c289fe54c489cf5743863f5e088", "version_major": 2, "version_minor": 0}</script></div>
+    </div><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8e8bf2a9f6c14ce1842aa86aa223d66c", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <figure class="align-default" id="rigorous-egh">
 <img alt="../../_images/rigorous-egh.png" src="../../_images/rigorous-egh.png" />
