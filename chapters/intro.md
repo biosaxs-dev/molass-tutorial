@@ -6,7 +6,7 @@ This tutorial will help you get started with the Molass Library. You can follow 
 
 As you proceed, you may also find the following resources helpful:
 * [Molass Library Essence](https://biosaxs-dev.github.io/molass-essence/) on theory, for researchers
-* [Molass Technical Report](https://freesemt.github.io/molass-technical/) on technical details, for advanced users
+* [Molass Technical Report](https://biosaxs-dev.github.io/molass-technical/) on technical details, for advanced users
 * [Molass Library Reference](https://biosaxs-dev.github.io/molass-library/) on function reference, for coding
 * [Molass Library Repository](https://github.com/biosaxs-dev/molass-library) on source code, for implementation
 
