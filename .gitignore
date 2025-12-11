@@ -22,3 +22,5 @@ local_settings.py
 
 **/atsas-results/**
 **/report_folder/**
+
+temp_analysis*/

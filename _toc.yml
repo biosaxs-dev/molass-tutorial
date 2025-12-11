@@ -26,5 +26,5 @@ chapters:
   title: Nontrivial Decomposition
 - file: chapters/11/advanced-models
   title: Advanced Elution Models
-- file: chapters/20/lro
-  title: Low Rank Optimization
+- file: chapters/20/rigorous
+  title: Rigorous Optimization
