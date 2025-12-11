@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. Low Rank Optimization &#8212; Molass Library Tutorial</title>
+    <title>11. Rigorous Optimization &#8212; Molass Library Tutorial</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,7 +57,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/20/lro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/20/rigorous';</script>
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -190,7 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../08/backward.html">8. Backward Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/nontrivial.html">9. Nontrivial Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../11/advanced-models.html">10. Advanced Elution Models</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Low Rank Optimization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Rigorous Optimization</a></li>
 </ul>
 
     </div>
@@ -262,7 +262,7 @@
       
       
       
-      <li><a href="https://github.com/biosaxs-dev/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/20/lro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/biosaxs-dev/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/20/rigorous.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +292,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/20/lro.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/20/rigorous.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -363,7 +363,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -374,11 +376,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Low Rank Optimization</h1>
+    <h1>Rigorous Optimization</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-get-initial-parameters">11.2. How to get initial parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#egh-quick-decomposition">11.3. EGH Quick Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#egh-rigorous-optimization">11.4. EGH Rigorous Optimization</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -388,12 +401,182 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="low-rank-optimization">
-<h1><span class="section-number">11. </span>Low Rank Optimization<a class="headerlink" href="#low-rank-optimization" title="Link to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is a planned feature.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="rigorous-optimization">
+<h1><span class="section-number">11. </span>Rigorous Optimization<a class="headerlink" href="#rigorous-optimization" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>We have already used some optimizations implicitly in several parts of implementation. Most of them are simple enough to be completed in several seconds. Although such simple optimizations can provide useful results for easy cases, they are not powerful enough for many other cases where component peaks are not visible.</p>
+<p>For those hard-to-analyze cases, the problem gets underdetermined, meaning there are so many possible solutions that we are not sure which one is appropriate.</p>
+<p>However, we can utilize SEC and SAXS theories to reduce the solution space. More concretely, we can add constraints based on the theories. For example, in plain words,</p>
+<ul class="simple">
+<li><p>Larger particles elute faster than smaller ones,</p></li>
+<li><p>Peaks broaden as they stay longer in the column,</p></li>
+<li><p>Reconstructed Rg curve should be consistent with observed Rg curve.</p></li>
+</ul>
+<p>We can impose these constraints by adding parameters, using advanced models and adopting global optimization methods.</p>
+<p>In this chapter, we will show how to use such rigorous optimizations leaving the detailed discussion elsewhere.</p>
+</section>
+<section id="how-to-get-initial-parameters">
+<h2><span class="section-number">11.2. </span>How to get initial parameters<a class="headerlink" href="#how-to-get-initial-parameters" title="Link to this heading">#</a></h2>
+<p>For the global optimization, the standard way of preparing initial parameters is one of the following.</p>
+<ul class="simple">
+<li><p>EGH: decomposition = ssd.quick_decomposition(proportions=[…])</p></li>
+<li><p>SDM: sdm_decomposition = decomposition.optimizw_with_model(‘SDM’)</p></li>
+<li><p>EDM: edm_decomposition = decomposition.optimizw_with_model(‘EDM’)</p></li>
+</ul>
+<p>For EGH, the default decomposition, preferably with proportions option, suffices.
+For other advanced models, use the EGH decomposition to get respective model parameters with optimizw_with_model method.</p>
+</section>
+<section id="egh-quick-decomposition">
+<h2><span class="section-number">11.3. </span>EGH Quick Decomposition<a class="headerlink" href="#egh-quick-decomposition" title="Link to this heading">#</a></h2>
+<p>Note that we have included the rgcurve here because it is required later for the rigorous optimization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">molass</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.7.5&#39;</span><span class="p">,</span> <span class="s2">&quot;this notebook requires molass v0.7.5 or higher.&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SAMPLE4</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molass.DataObjects</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE4</span><span class="p">)</span>
+<span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">proportions</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="n">rgcurve</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">compute_rgcurve</span><span class="p">()</span>
+<span class="n">plot6</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;EGH Decomposition&quot;</span><span class="p">,</span> <span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 203/203 [00:17&lt;00:00, 11.79it/s]
+</pre></div>
+</div>
+<img alt="../../_images/b01ceeecec21ad0d4edf84cabde4dbf4c92a2b8ce45fbfc19737fcbac2f9ca59.png" src="../../_images/b01ceeecec21ad0d4edf84cabde4dbf4c92a2b8ce45fbfc19737fcbac2f9ca59.png" />
+</div>
+</div>
+</section>
+<section id="egh-rigorous-optimization">
+<h2><span class="section-number">11.4. </span>EGH Rigorous Optimization<a class="headerlink" href="#egh-rigorous-optimization" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run_info</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">optimize_rigorously</span><span class="p">(</span><span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">,</span> <span class="n">analysis_folder</span><span class="o">=</span><span class="s2">&quot;temp_analysis_egh&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;NS&#39;</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>len(x), len(y), len(sy): 203 203 203
+len(x), len(y), len(sy): 441 441 441
+len(x), len(y), len(sy): 203 203 203
+len(x), len(y), len(sy): 441 441 441
+len(x), len(y), len(sy): 203 203 203
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python313\Lib\site-packages\molass_legacy\Trimming\Sigmoid.py:14: RuntimeWarning: overflow encountered in exp
+  return L/(1 + np.exp(-k*(x-x0))) + b
+get_spline:   File &quot;c:\Program Files\Python313\Lib\site-packages\scipy\interpolate\_fitpack2.py&quot;, line 920, in __init__
+    raise ValueError(_fpchec_error_string)
+ValueError: The input parameters have been rejected by fpchec. This means that at least one of the following conditions is violated:
+
+1) k+1 &lt;= n-k-1 &lt;= m
+2) t(1) &lt;= t(2) &lt;= ... &lt;= t(k+1)
+   t(n-k) &lt;= t(n-k+1) &lt;= ... &lt;= t(n)
+3) t(k+1) &lt; t(k+2) &lt; ... &lt; t(n-k)
+4) t(k+1) &lt;= x(i) &lt;= t(n-k)
+5) The conditions specified by Schoenberg and Whitney must hold
+   for at least one subset of data points, i.e., there must be a
+   subset of data points y(j) such that
+       t(j) &lt; y(j) &lt; t(j+k+1), j=1,2,...,n-k-1
+
+
+curve_fit(sigmoid, fx, fy, p0) failure:   File &quot;c:\Program Files\Python313\Lib\site-packages\scipy\optimize\_minpack_py.py&quot;, line 1026, in curve_fit
+    raise RuntimeError(&quot;Optimal parameters not found: &quot; + errmsg)
+RuntimeError: Optimal parameters not found: Number of calls to function has reached maxfev = 1000.
+
+fit_sigmoid error:   File &quot;c:\Program Files\Python313\Lib\site-packages\molass_legacy\Trimming\FlowChange.py&quot;, line 51, in try_fc_model_fit
+    assert len(ppk) &gt; 0
+           ^^^^^^^^^^^^
+AssertionError
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>do_mapping result ------------------ correlation= 0.9991817422653649
+make_it_compatible_from_sliced result ------------------ correlation= 0.9991817422653649
+ptx_ratio= 0.3276737562966875
+excess_width_ratio=0
+symmetry_deviation=1
+remaining_ratio= 0.004834884333595769
+labels= [2 1 1 4 1 0 1 4 3 2]
+============================= try_fc_model_fit: slice= slice(0, np.int64(142), None)
+fit_sigmoid_impl_impl: (s1, s2)=(3.38e-06, -2.13e-05)
+k=2.65 &gt; K_LIMIT, L_ratio=0.39
+sig_ratio= 0.02296575863899836
+============================= try_fc_model_fit: slice= slice(np.int64(252), None, None)
+fit_sigmoid_impl_impl: (s1, s2)=(-5.32e-06, 0.000314)
+fit_sigmoid_impl_impl: (s1, s2)=(-5.34e-06, -0.000153)
+L_ratio= 0.16551153531794643
+dist_ratio=0.0736
+outstanding_ratio=5.61, (min_dist, max_dist)=(0.557, 329)
+============================= try_fc_model_fit: slice= slice(108, 169, None)
+(error_ratio_, error_ratio+allow)=(inf, 0.345), special=False
+score= 0.9720635384862512
+recognize_num_peaks
+peak_width= 29
+recognize_num_peaks
+peak_width= 29
+e_index= 10
+qindex= 357
+qindex= 357
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>applied correct_largely_negative_values due to negetve_ratio=0.0998
+applied correct_largely_negative_values due to negetve_ratio=0.0985
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>len(x), len(y), len(sy): 441 441 441
+negetve_ratio= 0.09977324263038549
+negetve_ratio= 0.09852216748768473
+ret.x= [ 1.37989865e-03  1.05008423e+02  4.44447578e+01  2.24547801e-04
+ -9.81187801e-04 -8.87149796e-06 -2.45339067e-02]
+ret.x= [ 1.38434423e-03  1.05199384e+02  1.71250109e+00  2.22553202e-04
+  1.61175707e-05 -1.89756167e-06 -2.42049112e-02]
+opt_ret.fun= 8.680578885438453e-05
+----------------- guess_initial_secparams: poresize= 70
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7a1a529b6e114f1798453541f2987b1d", "version_major": 2, "version_minor": 0}</script><div class="output text_html">
+    <style>
+    .status-label-green {
+        color: green !important;
+        font-weight: bold;
+    }
+    .status-label-red {
+        color: red !important;
+        font-weight: bold;
+    }
+    .status-label-yellow {
+        color: orange !important;
+        font-weight: bold;
+    }
+    .status-label-yellow {
+        color: orange !important;
+        font-weight: bold;
+    }
+    .status-label-gray {
+        color: gray !important;
+        font-weight: bold;
+    }
+    .status-label-blue {
+        color: blue !important;     
+        font-weight: bold;
+    }
+    </style>
+    </div><script type="application/vnd.jupyter.widget-view+json">{"model_id": "791b3c289fe54c489cf5743863f5e088", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<figure class="align-default" id="rigorous-egh">
+<img alt="../../_images/rigorous-egh.png" src="../../_images/rigorous-egh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.1 </span><span class="caption-text">Rigorous Optimization (EGH)</span><a class="headerlink" href="#rigorous-egh" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>For more information, see <a class="reference external" href="https://biosaxs-dev.github.io/molass-technical/">Molass Technical Report</a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -441,6 +624,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-get-initial-parameters">11.2. How to get initial parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#egh-quick-decomposition">11.3. EGH Quick Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#egh-rigorous-optimization">11.4. EGH Rigorous Optimization</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
