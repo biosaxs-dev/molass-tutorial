@@ -24,3 +24,5 @@ local_settings.py
 **/report_folder/**
 
 temp_analysis*/
+# VS Code version (auto-updated by vscode-version-recorder extension)
+.github/vscode-version.txt
