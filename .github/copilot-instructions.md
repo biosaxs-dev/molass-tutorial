@@ -54,6 +54,12 @@ Kernel preference: global Python (`py`). Do not create venvs.
 
 ---
 
+## Response language
+
+**Response language**: English
+
+---
+
 ## 🔄 Updates
 
 **Latest**: March 25, 2026 — Updated to AI Context Standard v0.8; added `init.prompt.md` and `vscode-version.txt`  
