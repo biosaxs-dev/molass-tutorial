@@ -18,7 +18,28 @@ For first-time molass users, direct them to the [Beginner Onboarding repository]
 
 - **Format**: [MyST Markdown syntax](https://jupyterbook.org/en/stable/reference/cheatsheet.html) is used throughout unless otherwise stated
 - **Tone**: All documentation, instructions, and examples must be **beginner-friendly** — clear, easy to follow, suitable for users with no Python background. Use simple language, explain technical terms, provide step-by-step guidance wherever possible.
-- **Build tool**: Jupyter Book
+- **Build tool**: Jupyter Book v2 (MyST)
+
+---
+
+## MyST Configuration Notes
+
+**Important**: For detailed MyST troubleshooting (duplicate titles, frontmatter, build issues), see the [Documentation chapter in molass-develop](https://biosaxs-dev.github.io/molass-develop/chapters/07/documentation.html).
+
+**Quick reference**: Notebooks must have frontmatter in the first markdown cell to avoid title duplication:
+
+````markdown
+---
+title: Page Title
+---
+
+# Page Title
+## Section
+...
+````
+
+**Local testing**: `myst start` → http://localhost:3000  
+**Clean rebuild**: `myst clean --all` then `myst start`
 
 ---
 
