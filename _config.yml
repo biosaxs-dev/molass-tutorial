@@ -1,3 +1,14 @@
+# =============================================================================
+# LEGACY CONFIGURATION FILE - FOR REFERENCE ONLY
+# =============================================================================
+# This file was used by Jupyter Book v1 but is IGNORED by MyST v2.
+# The active configuration is now in myst.yml (MyST v2 format).
+# 
+# This file is kept for historical reference only.
+# Last active: ~2025 (Jupyter Book v1)
+# Superseded by: myst.yml (2026, MyST v2)
+# =============================================================================
+
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
