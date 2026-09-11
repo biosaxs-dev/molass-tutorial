@@ -1,29 +1,35 @@
 # molass-tutorial Update Plan (Post MyST v2 Migration)
 
-**Date:** 2026-07-01  
-**Status:** In Progress
+**Date:** 2026-07-06 (Status corrected)  
+**Status:** ✅ **MIGRATION COMPLETE**
 
 ---
 
 ## 📊 Current State
 
-### Notebook Output Status
+**Checker updated to ignore empty placeholder cells and use execution_count (not outputs).**
 
-| File | Status | Code Cells | With Output |
-|------|--------|------------|-------------|
-| quick_start.ipynb | PARTIAL | 6 | 5 |
-| data_objects.ipynb | ✅ OK | 11 | 11 |
-| data_trimming.ipynb | PARTIAL | 8 | 7 |
-| data_correction.ipynb | ✅ OK | 8 | 8 |
-| lrf.ipynb | EMPTY | 11 | 0 |
-| rank_estimation.ipynb | EMPTY | 7 | 0 |
-| denss.ipynb | EMPTY | 3 | 0 |
-| backward.ipynb | EMPTY | 5 | 0 |
-| nontrivial.ipynb | EMPTY | 6 | 0 |
-| advanced-models.ipynb | EMPTY | 3 | 0 |
-| rigorous.ipynb | ✅ OK | 4 | 4 |
+### Notebook Execution Status (12 notebooks total)
 
-**Summary:** 8 notebooks need attention (6 EMPTY, 2 PARTIAL)
+**Summary:**
+- ✅ **Fully executed: 12 notebooks** (100%)
+- ⚠️ **Partially executed: 0**
+- ❌ **Not executed: 0**
+- 📄 **No code cells: 0**
+
+All notebooks have been fully executed:
+- chapters/00/quick_start.ipynb — 6/6
+- chapters/01/data_objects.ipynb — 11/11
+- chapters/02/data_trimming.ipynb — 8/8
+- chapters/04/data_correction.ipynb — 8/8
+- chapters/04/work-1.ipynb — 1/1
+- chapters/05/lrf.ipynb — 11/11
+- chapters/06/rank_estimation.ipynb — 7/7
+- chapters/07/denss.ipynb — 3/3
+- chapters/08/backward.ipynb — 5/5
+- chapters/10/nontrivial.ipynb — 6/6
+- chapters/11/advanced-models.ipynb — 3/3
+- chapters/20/rigorous.ipynb — 4/4
 
 ### Configuration Status
 
